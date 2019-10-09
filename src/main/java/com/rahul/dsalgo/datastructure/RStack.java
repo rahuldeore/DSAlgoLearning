@@ -15,7 +15,7 @@ public interface RStack {
     int pop();
     int length();
     int top();
-    int[] reverse(int[] stack);
+    int[] reverse();
     void printStack();
     int capacity();
 }

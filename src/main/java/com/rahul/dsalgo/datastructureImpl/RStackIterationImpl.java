@@ -86,7 +86,7 @@ public class RStackIterationImpl implements RStack {
     }
 
     @Override
-    public int[] reverse(int[] stack) {
+    public int[] reverse() {
         int[] reverseStack = new int[numElements];
         for (int i=0; i<numElements; i++) {
             reverseStack[i]=stack[numElements-i];

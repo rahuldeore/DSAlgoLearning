@@ -58,5 +58,7 @@ class RStackIterationImplTest {
 
     @Test
     void reverse() {
+        rStackIteration.reverse();
+        rStackIteration.printStack();
     }
 }
