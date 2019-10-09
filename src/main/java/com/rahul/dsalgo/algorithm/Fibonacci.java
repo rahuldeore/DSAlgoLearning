@@ -33,7 +33,7 @@ public class Fibonacci {
     public void printFiboSequence(int term) {
         int fiboNum=0;
         if ( term == 0){
-            System.out.print(0);;
+            System.out.print(0);
         } else if (term == 1) {
             System.out.print(1);
         } else {
