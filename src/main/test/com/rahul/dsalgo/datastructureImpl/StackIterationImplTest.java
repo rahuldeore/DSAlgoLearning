@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RStackIterationImplTest {
+class StackIterationImplTest {
 
-    private RStackIterationImpl rStackIteration;
+    private StackIterationImpl rStackIteration;
 
     @BeforeEach
     void setUp() {
-        rStackIteration = new RStackIterationImpl();
+        rStackIteration = new StackIterationImpl();
     }
 
     @AfterEach

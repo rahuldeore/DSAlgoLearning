@@ -10,7 +10,7 @@ package com.rahul.dsalgo.datastructure;
 *
 * There is a separate linked list implementation of stack
 * */
-public interface RStack {
+public interface Stack {
     boolean push(int num);
     int pop();
     int length();

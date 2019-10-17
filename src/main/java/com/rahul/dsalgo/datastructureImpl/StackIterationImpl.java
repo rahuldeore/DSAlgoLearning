@@ -1,18 +1,18 @@
 package com.rahul.dsalgo.datastructureImpl;
 
-import com.rahul.dsalgo.datastructure.RStack;
+import com.rahul.dsalgo.datastructure.Stack;
 
 /**
  * Created by Rahul on 2019-10-06
  */
-public class RStackIterationImpl implements RStack {
+public class StackIterationImpl implements Stack {
 
     private static final int CAPACITY=10;
     private int[] stack;
     private boolean full;
     private int numElements;
 
-    public RStackIterationImpl() {
+    public StackIterationImpl() {
         stack = new int[CAPACITY];
         full = false;
         numElements = 0;
