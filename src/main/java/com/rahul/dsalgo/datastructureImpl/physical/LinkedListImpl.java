@@ -109,10 +109,11 @@ public class LinkedListImpl implements LinkedList {
                 if (tHead.next != null){
                     tHead = tHead.next;
                 }
-                element = tHead.element;
-                tHead.previous.next = tHead.next;
-                tHead.next.previous = tHead.previous;
             }
+            element = tHead.element;
+            tHead.previous.next = tHead.next;
+            tHead.next.previous = tHead.previous;
+            size--;
             return element;
         }
     }
