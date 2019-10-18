@@ -1,6 +1,6 @@
-package com.rahul.dsalgo.datastructureImpl;
+package com.rahul.dsalgo.datastructureImpl.logical;
 
-import com.rahul.dsalgo.datastructure.Stack;
+import com.rahul.dsalgo.datastructure.logical.Stack;
 
 /**
  * Created by Rahul on 2019-10-06

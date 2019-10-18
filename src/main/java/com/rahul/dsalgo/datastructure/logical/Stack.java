@@ -1,4 +1,4 @@
-package com.rahul.dsalgo.datastructure;
+package com.rahul.dsalgo.datastructure.logical;
 
 /**
  * Created by Rahul on 2019-10-06

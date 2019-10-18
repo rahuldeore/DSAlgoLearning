@@ -40,6 +40,12 @@ public class ArrayImpl implements Array {
         }
     }
 
+    // TODO This is not yet implemented
+    @Override
+    public int insert(int position, int element) {
+        return 0;
+    }
+
     @Override
     public int deleteElement(int element) {
         int pos = findPosition(element);
@@ -70,8 +76,6 @@ public class ArrayImpl implements Array {
             }
         } else {
             array[index]=Integer.MIN_VALUE;
-            // TODO this might be issue when deleting from position that was not initialized
-            //emptyIndex--;
         }
     }
 
@@ -119,4 +123,5 @@ public class ArrayImpl implements Array {
     public boolean isFull (){
         return size==emptyIndex;
     }
+
 }

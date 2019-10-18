@@ -14,6 +14,8 @@ public interface Array {
     * */
     int insert(int element);
 
+    int insert(int position, int element);
+
     /**
      * This function takes element as parameter and deletes it in the array. It then returns the position back to caller
      * . If the element does not exist in the array, it returns -1;
