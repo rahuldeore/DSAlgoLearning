@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8753fd3-5a4b-4371-8cc5-9fbfb8970372" name="Default Changelist" comment="Implemented linkedlist and fixed some bugs">
+    <list default="true" id="f8753fd3-5a4b-4371-8cc5-9fbfb8970372" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/logical/BinaryTree.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/components/BTNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/physical/CircularLinkedListImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DSAlgoLearning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DSAlgoLearning.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DSAlgoLearning/com/rahul/dsalgo/DSAlgoMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DSAlgoLearning/com/rahul/dsalgo/algorithm/Factorial.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DSAlgoLearning/com/rahul/dsalgo/algorithm/Fibonacci.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/physical/CircularLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/physical/CircularLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/physical/DoubleLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/physical/DoubleLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/physical/LinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/physical/LinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/StackIterationImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/StackArrayIterationImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/physical/LinkedListImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/physical/LinkedListImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/StackIterationImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/StackArrayIterationImplTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +49,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="1SD44bpDyjatVpEAzxeXHzfa4W7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -47,8 +73,12 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.rahul.dsalgo.datastructureImpl.logical" />
       <recent name="com.rahul.dsalgo.datastructureImpl.physical" />
       <recent name="com.rahul.dsalgo.datastructureImpl" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.rahul.dsalgo.datastructureImpl.logical" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -66,7 +96,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.LinkedListImplTest">
+  <component name="RunManager" selected="JUnit.BinaryTreeImplTest">
     <configuration name="ArrayImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DSAlgoLearning" />
       <extension name="coverage">
@@ -77,6 +107,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.rahul.dsalgo.datastructureImpl.physical" />
       <option name="MAIN_CLASS_NAME" value="com.rahul.dsalgo.datastructureImpl.physical.ArrayImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BinaryTreeImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DSAlgoLearning" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rahul.dsalgo.datastructureImpl.logical.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.rahul.dsalgo.datastructureImpl.logical" />
+      <option name="MAIN_CLASS_NAME" value="com.rahul.dsalgo.datastructureImpl.logical.BinaryTreeImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -97,7 +142,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StackIterationImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StackArrayIterationImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DSAlgoLearning" />
       <extension name="coverage">
         <pattern>
@@ -105,14 +150,14 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.rahul.dsalgo.datastructureImpl" />
-      <option name="MAIN_CLASS_NAME" value="com.rahul.dsalgo.datastructureImpl.StackIterationImplTest" />
+      <option name="PACKAGE_NAME" value="com.rahul.dsalgo.datastructureImpl.logical" />
+      <option name="MAIN_CLASS_NAME" value="com.rahul.dsalgo.datastructureImpl.logical.StackArrayIterationImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StackIterationImplTest.pushTwiceOverCapacity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="StackArrayIterationImplTest.pushTwiceOverCapacity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DSAlgoLearning" />
       <extension name="coverage">
         <pattern>
@@ -120,8 +165,8 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.rahul.dsalgo.datastructureImpl" />
-      <option name="MAIN_CLASS_NAME" value="com.rahul.dsalgo.datastructureImpl.StackIterationImplTest" />
+      <option name="PACKAGE_NAME" value="com.rahul.dsalgo.datastructureImpl.logical" />
+      <option name="MAIN_CLASS_NAME" value="com.rahul.dsalgo.datastructureImpl.logical.StackArrayIterationImplTest" />
       <option name="METHOD_NAME" value="pushTwiceOverCapacity" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -130,6 +175,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BinaryTreeImplTest" />
         <item itemvalue="JUnit.LinkedListImplTest" />
         <item itemvalue="JUnit.ArrayImplTest" />
       </list>
@@ -149,7 +195,9 @@
       <workItem from="1571079573086" duration="274000" />
       <workItem from="1571084645806" duration="77000" />
       <workItem from="1571084736339" duration="10136000" />
-      <workItem from="1571150541436" duration="29695000" />
+      <workItem from="1571150541436" duration="33599000" />
+      <workItem from="1571528955345" duration="3818000" />
+      <workItem from="1571580774068" duration="15367000" />
     </task>
     <task id="LOCAL-00001" summary="Added intellij workspace files">
       <created>1570394490875</created>
@@ -186,7 +234,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571405803692</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fixed bug for delete at certain position">
+      <created>1571435825074</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1571435825074</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -252,7 +307,29 @@
     <MESSAGE value="Implemented stack using array and added unit test" />
     <MESSAGE value="Some changes to the stack implementation and test class" />
     <MESSAGE value="Implemented Linkedlist" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented Linkedlist" />
+    <MESSAGE value="Fixed bug for delete at certain position" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug for delete at certain position" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java</url>
+          <line>62</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java</url>
+          <line>60</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

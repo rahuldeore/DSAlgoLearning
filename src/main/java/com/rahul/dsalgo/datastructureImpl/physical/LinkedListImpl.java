@@ -11,6 +11,30 @@ public class LinkedListImpl implements LinkedList {
     private Node tail;
     private int size;
 
+    public Node getHead() {
+        return head;
+    }
+
+    public void setHead(Node head) {
+        this.head = head;
+    }
+
+    public Node getTail() {
+        return tail;
+    }
+
+    public void setTail(Node tail) {
+        this.tail = tail;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     public LinkedListImpl() {
         this.head = new Node();
         this.tail = new Node();
@@ -185,14 +209,5 @@ public class LinkedListImpl implements LinkedList {
         System.out.println(tNode.element);
     }
 
-    @Override
-    public void printReverse() {
-        Node tNode = tail;
 
-        while (tNode.previous != null) {
-            System.out.print(tNode.element + " ");
-            tNode = tNode.previous;
-        }
-        System.out.println(tNode.element);
-    }
 }

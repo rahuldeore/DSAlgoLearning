@@ -49,10 +49,4 @@ public interface LinkedList {
      * Prints the list
      * */
     void print();
-
-
-    /**
-     * Prints the list in reverse order
-     * */
-    void printReverse();
 }

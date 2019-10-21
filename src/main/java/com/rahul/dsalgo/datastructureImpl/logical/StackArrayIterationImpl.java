@@ -5,14 +5,14 @@ import com.rahul.dsalgo.datastructure.logical.Stack;
 /**
  * Created by Rahul on 2019-10-06
  */
-public class StackIterationImpl implements Stack {
+public class StackArrayIterationImpl implements Stack {
 
     private static final int CAPACITY=10;
     private int[] stack;
     private boolean full;
     private int numElements;
 
-    public StackIterationImpl() {
+    public StackArrayIterationImpl() {
         stack = new int[CAPACITY];
         full = false;
         numElements = 0;

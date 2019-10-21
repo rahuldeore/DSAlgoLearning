@@ -1,19 +1,18 @@
-package com.rahul.dsalgo.datastructureImpl;
+package com.rahul.dsalgo.datastructureImpl.logical;
 
-import com.rahul.dsalgo.datastructureImpl.logical.StackIterationImpl;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StackIterationImplTest {
+class StackArrayIterationImplTest {
 
-    private StackIterationImpl rStackIteration;
+    private StackArrayIterationImpl rStackIteration;
 
     @BeforeEach
     void setUp() {
-        rStackIteration = new StackIterationImpl();
+        rStackIteration = new StackArrayIterationImpl();
     }
 
     @AfterEach
