@@ -38,4 +38,6 @@ public interface BinaryTree {
      * traverse level wise
      * */
     void traverseDfsLvlOrder();
+
+    boolean lookUp (int value);
 }
