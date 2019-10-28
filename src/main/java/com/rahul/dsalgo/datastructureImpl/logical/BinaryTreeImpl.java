@@ -147,6 +147,13 @@ public class BinaryTreeImpl implements BinaryTree {
         return parent.value;
     }
 
+    public void traverseBfsLvlOrder_2(BTNode node) {
+        BTNode originalTree = root;
+        root = node;
+        traverseBfsLvlOrder();
+        root = originalTree;
+    }
+
     @Override
     public void traverseBfsLvlOrder() {
         System.out.println("Level order traversal: ");
@@ -329,7 +336,34 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public BTNode mirror() {
-        return null;
+        BTNode mirrorRoot = new BTNode();
+        BTNode mirrorNode = mirrorRoot;
+
+        BTNode node = root;
+
+        Stack<BTNode> stack = new Stack<BTNode>();
+        Stack<BTNode> rStack = new Stack<BTNode>();
+
+        stack.push(node);
+        rStack.push(mirrorNode);
+        while (!stack.isEmpty()) {
+            node = stack.pop();
+            mirrorNode = rStack.pop();
+            mirrorNode.value=node.value;
+            if (node.leftChild != null) {
+
+                if (node.rightChild != null) {
+                    mirrorNode.leftChild = new BTNode();
+                    stack.push(node.rightChild);
+                    rStack.push(mirrorNode.leftChild);
+                }
+                mirrorNode.rightChild = new BTNode();
+                stack.push(node.leftChild);
+                rStack.push(mirrorNode.rightChild);
+            }
+        }
+
+        return mirrorRoot;
     }
 
     @Override

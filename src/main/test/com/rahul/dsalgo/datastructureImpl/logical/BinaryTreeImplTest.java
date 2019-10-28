@@ -1,5 +1,6 @@
 package com.rahul.dsalgo.datastructureImpl.logical;
 
+import com.rahul.dsalgo.datastructureImpl.logical.components.BTNode;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -239,5 +240,29 @@ class BinaryTreeImplTest {
         assertEquals(true,binaryTree.hasPathSum(16));
         assertEquals(false,binaryTree.hasPathSum(17));
         assertEquals(true,binaryTree.hasPathSum(18));
+    }
+
+    @Test
+    void mirrorTreeTest() {
+        binaryTree.create();
+        binaryTree.insertNode(1);
+        binaryTree.insertNode(2);
+        binaryTree.insertNode(3);
+        binaryTree.insertNode(4);
+        binaryTree.insertNode(5);
+        binaryTree.insertNode(6);
+        binaryTree.insertNode(7);
+        binaryTree.insertNode(8);
+        binaryTree.insertNode(9);
+        binaryTree.insertNode(10);
+        binaryTree.insertNode(11);
+        binaryTree.insertNode(12);
+        binaryTree.insertNode(13);
+        binaryTree.insertNode(14);
+        binaryTree.insertNode(15);
+        BTNode mirrorTree = binaryTree.mirror();
+        binaryTree.traverseBfsLvlOrder();
+        binaryTree.traverseBfsLvlOrder_2(mirrorTree);
+        binaryTree.traverseBfsLvlOrder();
     }
 }
