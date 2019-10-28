@@ -25,7 +25,7 @@ class BinaryTreeImplTest {
     }
 
     @Test
-    void traverseBfsPreOrder() {
+    void traverseDfsPreOrderTest() {
         binaryTree.create();
         binaryTree.insertNode(1);
         binaryTree.insertNode(2);
@@ -42,7 +42,7 @@ class BinaryTreeImplTest {
         binaryTree.insertNode(13);
         binaryTree.insertNode(14);
         binaryTree.insertNode(15);
-        binaryTree.traverseBfsPreOrder();
+        binaryTree.traverseDfsPreOrder();
     }
 
     @Test
@@ -63,6 +63,48 @@ class BinaryTreeImplTest {
         assertEquals(6, binaryTree.insertNode(13));
         assertEquals(7, binaryTree.insertNode(14));
         assertEquals(7, binaryTree.insertNode(15));
+    }
+
+    @Test
+    void traverseDfsPostOrderTest() {
+        binaryTree.create();
+        binaryTree.insertNode(1);
+        binaryTree.insertNode(2);
+        binaryTree.insertNode(3);
+        binaryTree.insertNode(4);
+        binaryTree.insertNode(5);
+        binaryTree.insertNode(6);
+        binaryTree.insertNode(7);
+        binaryTree.insertNode(8);
+        binaryTree.insertNode(9);
+        binaryTree.insertNode(10);
+        binaryTree.insertNode(11);
+        binaryTree.insertNode(12);
+        binaryTree.insertNode(13);
+        binaryTree.insertNode(14);
+        binaryTree.insertNode(15);
+        binaryTree.traverseDfsPostOrder();
+    }
+
+    @Test
+    void traverseDfsInOrderTest() {
+        binaryTree.create();
+        binaryTree.insertNode(1);
+        binaryTree.insertNode(2);
+        binaryTree.insertNode(3);
+        binaryTree.insertNode(4);
+        binaryTree.insertNode(5);
+        binaryTree.insertNode(6);
+        binaryTree.insertNode(7);
+        binaryTree.insertNode(8);
+        binaryTree.insertNode(9);
+        binaryTree.insertNode(10);
+        binaryTree.insertNode(11);
+        binaryTree.insertNode(12);
+        binaryTree.insertNode(13);
+        binaryTree.insertNode(14);
+        binaryTree.insertNode(15);
+        binaryTree.traverseDfsInOrder();
     }
 
     @Test
@@ -110,5 +152,92 @@ class BinaryTreeImplTest {
         assertEquals(true, binaryTree.lookUp(12));
         assertEquals(true, binaryTree.lookUp(15));
         assertEquals(false, binaryTree.lookUp(22));
+    }
+
+    @Test
+    void printTreeTest(){
+        binaryTree.create();
+        binaryTree.insertNode(1);
+        binaryTree.insertNode(2);
+        binaryTree.insertNode(3);
+        binaryTree.insertNode(4);
+        binaryTree.insertNode(5);
+        binaryTree.insertNode(6);
+        binaryTree.insertNode(7);
+        binaryTree.insertNode(8);
+        binaryTree.insertNode(9);
+        binaryTree.insertNode(10);
+        binaryTree.insertNode(11);
+        binaryTree.insertNode(12);
+        binaryTree.insertNode(13);
+        binaryTree.insertNode(14);
+        binaryTree.insertNode(15);
+        binaryTree.printTree();
+    }
+
+    @Test
+    void traverseBfsLvlOrderTest (){
+        binaryTree.create();
+        binaryTree.insertNode(1);
+        binaryTree.insertNode(2);
+        binaryTree.insertNode(3);
+        binaryTree.insertNode(4);
+        binaryTree.insertNode(5);
+        binaryTree.insertNode(6);
+        binaryTree.insertNode(7);
+        binaryTree.insertNode(8);
+        binaryTree.insertNode(9);
+        binaryTree.insertNode(10);
+        binaryTree.insertNode(11);
+        binaryTree.insertNode(12);
+        binaryTree.insertNode(13);
+        binaryTree.insertNode(14);
+        binaryTree.insertNode(15);
+        binaryTree.traverseBfsLvlOrder();
+    }
+
+    @Test
+    void printPathsTest() {
+        binaryTree.create();
+        binaryTree.insertNode(1);
+        binaryTree.insertNode(2);
+        binaryTree.insertNode(3);
+        binaryTree.insertNode(4);
+        binaryTree.insertNode(5);
+        binaryTree.insertNode(6);
+        binaryTree.insertNode(7);
+        binaryTree.insertNode(8);
+        binaryTree.insertNode(9);
+        binaryTree.insertNode(10);
+        binaryTree.insertNode(11);
+        binaryTree.insertNode(12);
+        binaryTree.insertNode(13);
+        binaryTree.insertNode(14);
+        binaryTree.insertNode(15);
+        binaryTree.printPaths();
+    }
+
+    @Test
+    void hasPathSumTest() {
+        binaryTree.create();
+        binaryTree.insertNode(1);
+        binaryTree.insertNode(2);
+        binaryTree.insertNode(3);
+        binaryTree.insertNode(4);
+        binaryTree.insertNode(5);
+        binaryTree.insertNode(6);
+        binaryTree.insertNode(7);
+        binaryTree.insertNode(8);
+        binaryTree.insertNode(9);
+        binaryTree.insertNode(10);
+        binaryTree.insertNode(11);
+        binaryTree.insertNode(12);
+        binaryTree.insertNode(13);
+        binaryTree.insertNode(14);
+        binaryTree.insertNode(15);
+        assertEquals(true,binaryTree.hasPathSum(15));
+        assertEquals(true,binaryTree.hasPathSum(16));
+        assertEquals(false,binaryTree.hasPathSum(17));
+        assertEquals(true,binaryTree.hasPathSum(18));
     }
 }

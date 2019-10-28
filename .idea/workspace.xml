@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8753fd3-5a4b-4371-8cc5-9fbfb8970372" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_java5_17_0_0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DSAlgoLearning.iml" beforeDir="false" afterPath="$PROJECT_DIR$/DSAlgoLearning.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/logical/BinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/logical/BinaryTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImplTest.java" afterDir="false" />
@@ -180,7 +183,8 @@
       <workItem from="1571084736339" duration="10136000" />
       <workItem from="1571150541436" duration="33599000" />
       <workItem from="1571528955345" duration="3818000" />
-      <workItem from="1571580774068" duration="21165000" />
+      <workItem from="1571580774068" duration="48274000" />
+      <workItem from="1572186584738" duration="10078000" />
     </task>
     <task id="LOCAL-00001" summary="Added intellij workspace files">
       <created>1570394490875</created>
@@ -231,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1571616206500</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Refactored and fixed bug with insert node into binary tree. Added some unit test.">
+      <created>1571626960207</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1571626960207</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,6 +286,56 @@
             </State>
           </value>
         </entry>
+        <entry key="2">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+        <entry key="3">
+          <value>
+            <State>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="roots">
+                    <value>
+                      <list>
+                        <option value="$PROJECT_DIR$" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -287,6 +348,8 @@
     <option name="OPEN_TABS">
       <set>
         <option value="1" />
+        <option value="2" />
+        <option value="3" />
       </set>
     </option>
   </component>
@@ -299,7 +362,19 @@
     <MESSAGE value="Implemented Linkedlist" />
     <MESSAGE value="Fixed bug for delete at certain position" />
     <MESSAGE value="Implemented complete binary tree insertion and bfs preorder traversal." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented complete binary tree insertion and bfs preorder traversal." />
+    <MESSAGE value="Refactored and fixed bug with insert node into binary tree. Added some unit test." />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored and fixed bug with insert node into binary tree. Added some unit test." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
