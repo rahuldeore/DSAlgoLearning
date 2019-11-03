@@ -265,4 +265,56 @@ class BinaryTreeImplTest {
         binaryTree.traverseBfsLvlOrder_2(mirrorTree);
         binaryTree.traverseBfsLvlOrder();
     }
+
+    @Test
+    void preOrderTraversalTest() {
+        // iterative function test
+        binaryTree.create();
+        binaryTree.insertNode(1);
+        binaryTree.insertNode(2);
+        binaryTree.insertNode(3);
+        binaryTree.insertNode(4);
+        binaryTree.insertNode(5);
+        binaryTree.insertNode(6);
+        binaryTree.insertNode(7);
+        binaryTree.insertNode(8);
+        binaryTree.insertNode(9);
+        binaryTree.insertNode(10);
+        binaryTree.insertNode(11);
+        binaryTree.insertNode(12);
+        binaryTree.insertNode(13);
+        binaryTree.insertNode(14);
+        binaryTree.insertNode(15);
+        binaryTree.preOrderTraversal(binaryTree.getRoot());
+    }
+
+    @Test
+    void inOrderTraversalTest() {
+        // iterative function test
+        binaryTree.create();
+        binaryTree.insertNode(1);
+        binaryTree.insertNode(2);
+        binaryTree.insertNode(3);
+        binaryTree.insertNode(4);
+        binaryTree.insertNode(5);
+        binaryTree.insertNode(6);
+        binaryTree.insertNode(7);
+        binaryTree.insertNode(8);
+        binaryTree.insertNode(9);
+        binaryTree.insertNode(10);
+        binaryTree.insertNode(11);
+        binaryTree.insertNode(12);
+        binaryTree.insertNode(13);
+        binaryTree.insertNode(14);
+        binaryTree.insertNode(15);
+        binaryTree.insertNode(16);
+        binaryTree.insertNode(17);
+        binaryTree.insertNode(18);
+        binaryTree.insertNode(19);
+        binaryTree.insertNode(20);
+        binaryTree.insertNode(21);
+        binaryTree.insertNode(22);
+
+        binaryTree.inOrderTraversal(binaryTree.getRoot());
+    }
 }

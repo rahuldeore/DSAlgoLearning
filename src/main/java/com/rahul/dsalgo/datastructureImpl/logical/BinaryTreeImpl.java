@@ -6,6 +6,9 @@ import com.rahul.dsalgo.datastructureImpl.logical.components.BTNode;
 import java.util.*;
 
 /**
+ * This is un-ordered binary tree implementation that follows the principal of complete binary tree. All levels except
+ * possibly the last level is completely filled and the elements in the last level are all to the left.
+ *
  * Created by Rahul on 10/19/19
  */
 public class BinaryTreeImpl implements BinaryTree {
@@ -16,6 +19,10 @@ public class BinaryTreeImpl implements BinaryTree {
     private int treeDepth;
     private int leafCount;
     private boolean leftInsert; // this is for random insertion algorithm
+
+    public BTNode getRoot() {
+        return root;
+    }
 
     public BinaryTreeImpl() {
     }
@@ -34,6 +41,59 @@ public class BinaryTreeImpl implements BinaryTree {
     public void traverseDfsInOrder() {
         BTNode rootNode = root;
         traverseDfsInOrder_1(rootNode);
+    }
+
+    /**
+     * This method prints binary tree in pre-order fashion using iteration rather than recursion.
+     * */
+    public void preOrderTraversal(BTNode root) {
+        Stack<BTNode> stack = new Stack<BTNode>();
+        BTNode node = root;
+        if (node == null) {
+            return;
+        } else {
+            stack.push(node);
+            while (!stack.isEmpty()) {
+                node = stack.pop();
+                System.out.print(node.value + " ");
+                if (node.rightChild != null) {
+                    stack.push(node.rightChild);
+                }
+                if (node.leftChild != null) {
+                    stack.push(node.leftChild);
+                }
+            }
+        }
+    }
+
+    /**
+     * TODO check runtime
+     * This method prints the binary tree in-order and uses iteration rather than recursion
+     * @param
+     * */
+    public void inOrderTraversal(BTNode root) {
+        Stack<BTNode> stack = new Stack<BTNode>();
+        BTNode node = null;
+        if (root == null) {
+            return;
+        } else {
+            stack.push(root);
+            while (!stack.isEmpty()) {
+                if (stack.peek().leftChild != null && node != stack.peek().leftChild) {
+                    stack.push(stack.peek().leftChild);
+                } else {
+                    node = stack.pop();
+                    System.out.print(node.value + " ");
+                    if (node.rightChild != null) {
+                        stack.push(node.rightChild);
+                    } else {
+                        if (!stack.isEmpty()) {
+                            node = stack.peek().leftChild;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private void traverseDfsInOrder_1(BTNode node) {
@@ -173,7 +233,6 @@ public class BinaryTreeImpl implements BinaryTree {
             }
             System.out.print(node.value + " ");
         }
-
     }
 
     public int nodeCount(){
@@ -368,23 +427,42 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public void doubleTree() {
-
+        // TODO implementation remaining
     }
 
     @Override
     public void sameTree(BTNode tree1, BTNode tree2) {
-
+        // TODO implementation remaining
     }
 
     @Override
     public void countTree(int elementCount) {
-
+        // TODO implementation remaining
     }
 
     @Override
     public void addTrees(BTNode tree1, BTNode tree2) {
-
+        // TODO implementation remaining
     }
 
+    @Override
+    public void delete(int value) {
+        // TODO Need to decide on the delete algorithm. Which child node becomes the parent when non leaf node is
+        //  deleted
+    }
 
+    @Override
+    public void reBalanceTree(BTNode node) {
+        // TODO Need to understand this properly
+    }
+
+    @Override
+    public void mirrorSelf() {
+        // TODO Implementation remaining
+    }
+
+    @Override
+    public void treeList() {
+        // Is targeted to be implemented in a BST/ordered binary tree
+    }
 }

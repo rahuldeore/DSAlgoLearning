@@ -3,6 +3,7 @@ package com.rahul.dsalgo.datastructure.logical;
 import com.rahul.dsalgo.datastructureImpl.logical.components.BTNode;
 
 /**
+ *
  * Created by Rahul on 10/19/19
  */
 public interface BinaryTree {
@@ -28,9 +29,14 @@ public interface BinaryTree {
     void traverseDfsPostOrder();
 
     /**
+     *
+     * In case of an un-ordered binary tree:-
      * Builds a COMPLETE binary tree with only last level not completely filled and elements to the left most.
      *
-     * Insert follows pre-order principal to add new elements to the tree. Returns the value of parent node. In case of
+     * Insert follows pre-order principal to add new elements to the tree.
+     *
+     * For all types of trees:-
+     * Returns the value of parent node. In case of
      * root node, returns value 0 since there is no parent of root.
      * */
     int insertNode(int value);
@@ -109,8 +115,30 @@ public interface BinaryTree {
     void countTree(int elementCount);
 
     /**
-     * Adds two binary trees to form third one.
+     * Adds two binary trees to form third one. Addition happens at the node level and resultant tree contains number
+     * of elements equal to max of both trees
      * */
     void addTrees(BTNode tree1, BTNode tree2);
 
+    /***/
+    void delete(int value);
+
+    /**
+     * This method re-balances the binary tree to make it a complete binary tree. This is needed after deletion of node
+     * in a binary tree
+     * */
+    void reBalanceTree(BTNode node);
+
+    /**
+     * This method mirrors the original binary tree in place and do not create a new mirror
+     * */
+    void mirrorSelf();
+
+    /**
+     * This problem realizes the fact that ordered binary tree (Binary search tree) is implemented using node structure
+     * exactly same as that of a doubly linked list except the naming convention.
+     *
+     * This function converts a BST into an ordered doubly circular linked list.
+     * */
+    void treeList();
 }

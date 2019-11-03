@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f8753fd3-5a4b-4371-8cc5-9fbfb8970372" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/algorithm/TreeList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinarySearchTreeImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinarySearchTreeImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/logical/BinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/logical/BinaryTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImplTest.java" afterDir="false" />
     </list>
@@ -52,9 +56,11 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.rahul.dsalgo.datastructureImpl.logical.components" />
       <recent name="com.rahul.dsalgo.datastructureImpl.logical" />
       <recent name="com.rahul.dsalgo.datastructureImpl.physical" />
       <recent name="com.rahul.dsalgo.datastructureImpl" />
@@ -78,7 +84,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BinaryTreeImplTest">
+  <component name="RunManager" selected="JUnit.BinarySearchTreeImplTest">
     <configuration name="ArrayImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DSAlgoLearning" />
       <extension name="coverage">
@@ -89,6 +95,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.rahul.dsalgo.datastructureImpl.physical" />
       <option name="MAIN_CLASS_NAME" value="com.rahul.dsalgo.datastructureImpl.physical.ArrayImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BinarySearchTreeImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DSAlgoLearning" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rahul.dsalgo.datastructureImpl.logical.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.rahul.dsalgo.datastructureImpl.logical" />
+      <option name="MAIN_CLASS_NAME" value="com.rahul.dsalgo.datastructureImpl.logical.BinarySearchTreeImplTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,21 +145,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StackArrayIterationImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="DSAlgoLearning" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.rahul.dsalgo.datastructureImpl.logical.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.rahul.dsalgo.datastructureImpl.logical" />
-      <option name="MAIN_CLASS_NAME" value="com.rahul.dsalgo.datastructureImpl.logical.StackArrayIterationImplTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="StackArrayIterationImplTest.pushTwiceOverCapacity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DSAlgoLearning" />
       <extension name="coverage">
@@ -157,6 +163,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BinarySearchTreeImplTest" />
         <item itemvalue="JUnit.BinaryTreeImplTest" />
         <item itemvalue="JUnit.LinkedListImplTest" />
         <item itemvalue="JUnit.ArrayImplTest" />
@@ -180,7 +187,7 @@
       <workItem from="1571150541436" duration="33599000" />
       <workItem from="1571528955345" duration="3818000" />
       <workItem from="1571580774068" duration="48274000" />
-      <workItem from="1572186584738" duration="19147000" />
+      <workItem from="1572186584738" duration="64378000" />
     </task>
     <task id="LOCAL-00001" summary="Added intellij workspace files">
       <created>1570394490875</created>
@@ -245,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572285249352</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Implemented and tested mirror tree function">
+      <created>1572300789638</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1572300789638</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -367,7 +381,8 @@
     <MESSAGE value="Implemented complete binary tree insertion and bfs preorder traversal." />
     <MESSAGE value="Refactored and fixed bug with insert node into binary tree. Added some unit test." />
     <MESSAGE value="Implemented and tested BFS/Level order traversal, DFS, printPaths, pathSum and printTree" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented and tested BFS/Level order traversal, DFS, printPaths, pathSum and printTree" />
+    <MESSAGE value="Implemented and tested mirror tree function" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented and tested mirror tree function" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>
