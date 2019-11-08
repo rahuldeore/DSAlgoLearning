@@ -1,6 +1,6 @@
 package com.rahul.dsalgo.datastructureImpl.logical;
 
-import com.rahul.dsalgo.datastructure.logical.BinaryTree;
+import com.rahul.dsalgo.datastructure.logical.BinarySearchTree;
 import com.rahul.dsalgo.datastructureImpl.logical.components.BTNode;
 
 import java.util.Stack;
@@ -8,7 +8,7 @@ import java.util.Stack;
 /**
  * Created by Rahul on 10/28/19
  */
-public class BinarySearchTreeImpl extends BinaryTreeImpl implements BinaryTree {
+public class BinarySearchTreeImpl extends BinaryTreeImpl implements BinarySearchTree {
     public BTNode root;
 
     @Override
@@ -52,36 +52,67 @@ public class BinarySearchTreeImpl extends BinaryTreeImpl implements BinaryTree {
     }
 
     /**
-     * TODO 11/03/19 NOT WORKING. GETTING INTO INFINITE LOOP
+     * TODO 11/03/19 Revisit this logic to find run time and make sure this takes no more than O(n).
+     * i.e visit each node no more than once
      * */
-
     @Override
     public void treeList() {
         // Converts the ordered binary tree into circular ordered doubly linked list
         Stack<BTNode> stack = new Stack<BTNode>();
-        BTNode node = root;
-        BTNode head = null;
-        stack.push(node);
-
-        while ( !stack.isEmpty() ) {
-            node = stack.pop();
-            if (node.rightChild != null) {
-                stack.push(node.rightChild);
-            } else {
-                stack.push(node);
-            }
-            node = node.leftChild;
+        BTNode node = null;
+        BTNode head, tail = null;
+        if (root == null){
+            return;
+        }
+        stack.push(root);
+        head = root;
+        // Runtime O(log(n))
+        while ( head.leftChild != null ) {
+            head = head.leftChild;
+            stack.push(head);
         }
 
-        head.leftChild = node;
-        node.rightChild = head;
+        // Runtime O(n)
+        while (!stack.isEmpty()){
+            if (stack.peek().leftChild != null && node != stack.peek().leftChild) {
+                stack.push(stack.peek().leftChild);
+            } else {
+                node = stack.pop();
+                if (node.rightChild != null) {
+                    stack.push(node.rightChild);
+                    node.rightChild.leftChild = node;
+                } else {
+                    if (!stack.isEmpty()) {
+                        node.rightChild = stack.peek();
+                        stack.peek().leftChild = node;
+                        node = stack.peek().leftChild;
+                    }
+                }
+            }
+        }
+        tail = node;
+        printTreeList(head);
+        reversePrintTreeList(tail);
+    }
 
+    private void printTreeList(BTNode head) {
+        System.out.println("Printing the Tree-Node Result: ");
         // Print
-        node = head;
-        while (node.rightChild != head) {
+        BTNode node = head;
+        while (node !=null)
+        {
             System.out.print(node.value + " ");
             node = node.rightChild;
         }
-        System.out.print(node.value + " ");
+    }
+
+    private void reversePrintTreeList(BTNode tail) {
+        System.out.println("Reverse Printing the Tree-Node result: ");
+        // Print reverse
+        BTNode node = tail;
+        while (node != null) {
+            System.out.print(node.value + " ");
+            node = node.leftChild;
+        }
     }
 }

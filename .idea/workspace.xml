@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8753fd3-5a4b-4371-8cc5-9fbfb8970372" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/algorithm/TreeList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinarySearchTreeImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinarySearchTreeImplTest.java" afterDir="false" />
+    <list default="true" id="f8753fd3-5a4b-4371-8cc5-9fbfb8970372" name="Default Changelist" comment="Refactored and cleaned up some code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/logical/BinaryTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructure/logical/BinaryTree.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinarySearchTreeImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinarySearchTreeImplTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test/com/rahul/dsalgo/datastructureImpl/logical/BinaryTreeImplTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -84,7 +82,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.BinarySearchTreeImplTest">
+  <component name="RunManager" selected="JUnit.BinaryTreeImplTest">
     <configuration name="ArrayImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DSAlgoLearning" />
       <extension name="coverage">
@@ -163,8 +161,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BinarySearchTreeImplTest" />
         <item itemvalue="JUnit.BinaryTreeImplTest" />
+        <item itemvalue="JUnit.BinarySearchTreeImplTest" />
         <item itemvalue="JUnit.LinkedListImplTest" />
         <item itemvalue="JUnit.ArrayImplTest" />
       </list>
@@ -187,7 +185,7 @@
       <workItem from="1571150541436" duration="33599000" />
       <workItem from="1571528955345" duration="3818000" />
       <workItem from="1571580774068" duration="48274000" />
-      <workItem from="1572186584738" duration="64378000" />
+      <workItem from="1572186584738" duration="80551000" />
     </task>
     <task id="LOCAL-00001" summary="Added intellij workspace files">
       <created>1570394490875</created>
@@ -259,7 +257,21 @@
       <option name="project" value="LOCAL" />
       <updated>1572300789638</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Implemented iterative inorder traversal by self without any help from internet. :)&#10;Renaming function to simple names is needed. Additional refactoring may be needed to make function implementation in BinaryTree generic for BinarySearchTree class.">
+      <created>1572817998740</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1572817998740</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Implemented the Great Tree-List problem solution. Refactored and cleaned up some code.">
+      <created>1573247097272</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1573247097272</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +394,9 @@
     <MESSAGE value="Refactored and fixed bug with insert node into binary tree. Added some unit test." />
     <MESSAGE value="Implemented and tested BFS/Level order traversal, DFS, printPaths, pathSum and printTree" />
     <MESSAGE value="Implemented and tested mirror tree function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented and tested mirror tree function" />
+    <MESSAGE value="Implemented iterative inorder traversal by self without any help from internet. :)&#10;Renaming function to simple names is needed. Additional refactoring may be needed to make function implementation in BinaryTree generic for BinarySearchTree class." />
+    <MESSAGE value="Implemented the Great Tree-List problem solution. Refactored and cleaned up some code." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the Great Tree-List problem solution. Refactored and cleaned up some code." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

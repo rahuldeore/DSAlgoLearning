@@ -21,7 +21,7 @@ public class BinaryTreeImpl implements BinaryTree {
     private boolean leftInsert; // this is for random insertion algorithm
 
     public BTNode getRoot() {
-        return root;
+        return this.root;
     }
 
     public BinaryTreeImpl() {
@@ -37,16 +37,11 @@ public class BinaryTreeImpl implements BinaryTree {
         leftInsert = true;
     }
 
-    @Override
-    public void traverseDfsInOrder() {
-        BTNode rootNode = root;
-        traverseDfsInOrder_1(rootNode);
-    }
-
     /**
      * This method prints binary tree in pre-order fashion using iteration rather than recursion.
      * */
     public void preOrderTraversal(BTNode root) {
+        System.out.println("Pre-Order traversal (Iterative)");
         Stack<BTNode> stack = new Stack<BTNode>();
         BTNode node = root;
         if (node == null) {
@@ -72,6 +67,7 @@ public class BinaryTreeImpl implements BinaryTree {
      * @param
      * */
     public void inOrderTraversal(BTNode root) {
+        System.out.println("In-order traversal (Iterative)");
         Stack<BTNode> stack = new Stack<BTNode>();
         BTNode node = null;
         if (root == null) {
@@ -96,47 +92,65 @@ public class BinaryTreeImpl implements BinaryTree {
         }
     }
 
-    private void traverseDfsInOrder_1(BTNode node) {
+    void postOrderTraversal(BTNode root) {
+        System.out.println("Post-order traversal (Iterative)");
+
+    }
+
+    @Override
+    public void traverseDfsInOrder(BTNode node) {
         if (node == null) {
             return;
         } else {
-            traverseDfsInOrder_1(node.leftChild);
+            traverseDfsInOrder(node.leftChild);
             System.out.print(node.value + " ");
-            traverseDfsInOrder_1(node.rightChild);
+            traverseDfsInOrder(node.rightChild);
         }
     }
 
     @Override
-    public void traverseDfsPreOrder() {
-        BTNode rootNode = root;
-        traverseDfsPreOrder_1(rootNode);
-    }
-
-    private void traverseDfsPreOrder_1(BTNode node) {
+    public void traverseDfsPreOrder(BTNode node) {
         if (node == null){
             return;
         } else {
             System.out.print(node.value + " ");
-            traverseDfsPreOrder_1(node.leftChild);
-            traverseDfsPreOrder_1(node.rightChild);
+            traverseDfsPreOrder(node.leftChild);
+            traverseDfsPreOrder(node.rightChild);
         }
     }
 
     @Override
-    public void traverseDfsPostOrder() {
-        BTNode rootNode = root;
-        traverseDfsPostOrder_1(rootNode);
-    }
-
-    public void traverseDfsPostOrder_1(BTNode node){
+    public void traverseDfsPostOrder(BTNode node){
         if (node == null) {
             return;
         } else {
-            traverseDfsPostOrder_1(node.leftChild);
-            traverseDfsPostOrder_1(node.rightChild);
+            traverseDfsPostOrder(node.leftChild);
+            traverseDfsPostOrder(node.rightChild);
             System.out.print(node.value + " ");
         }
     }
+
+    @Override
+    public void traverseBfsLvlOrder(BTNode node) {
+        System.out.println("Level order traversal (Iterative)");
+        if (node == null) {
+            return;
+        }
+        List<BTNode> que = new ArrayList<BTNode>();
+        que.add(node);
+        while ( !que.isEmpty() ){
+            node = que.remove(0);
+            if (node.leftChild != null) {
+                que.add(node.leftChild);
+                if (node.rightChild != null) {
+                    que.add(node.rightChild);
+                }
+            }
+            System.out.print(node.value + " ");
+        }
+        System.out.println();
+    }
+
 
     @Override
     public int insertNode(int value) {
@@ -205,34 +219,6 @@ public class BinaryTreeImpl implements BinaryTree {
         leafCount++;
         nodeCount++;
         return parent.value;
-    }
-
-    public void traverseBfsLvlOrder_2(BTNode node) {
-        BTNode originalTree = root;
-        root = node;
-        traverseBfsLvlOrder();
-        root = originalTree;
-    }
-
-    @Override
-    public void traverseBfsLvlOrder() {
-        System.out.println("Level order traversal: ");
-        BTNode node = root;
-        if (node == null) {
-            return;
-        }
-        List<BTNode> que = new ArrayList<BTNode>();
-        que.add(node);
-        while ( !que.isEmpty() ){
-            node = que.remove(0);
-            if (node.leftChild != null) {
-                que.add(node.leftChild);
-                if (node.rightChild != null) {
-                    que.add(node.rightChild);
-                }
-            }
-            System.out.print(node.value + " ");
-        }
     }
 
     public int nodeCount(){
@@ -459,10 +445,5 @@ public class BinaryTreeImpl implements BinaryTree {
     @Override
     public void mirrorSelf() {
         // TODO Implementation remaining
-    }
-
-    @Override
-    public void treeList() {
-        // Is targeted to be implemented in a BST/ordered binary tree
     }
 }
