@@ -9,29 +9,35 @@ import com.rahul.dsalgo.datastructureImpl.logical.components.BTNode;
 public interface BinaryTree {
 
     /**
-     * Creates the root of the binary tree.
+     * Creates the root of the binary tree. This is completely unnecessary function but I did this because a video
+     * I referred initially was using this.
      * */
     void create();
 
     /**
      * Prints the tree in Left-Root-Right order. Recursive solution
      * */
-    void traverseDfsInOrder();
+    void traverseDfsInOrder(BTNode root);
 
     /**
      * Prints the tree in Root-Left-Right order. Recursive solution.
-     * @param */
-    void traverseDfsPreOrder();
+     * */
+    void traverseDfsPreOrder(BTNode root);
 
     /**
      * Prints the tree in Left-Right-Root order. Recursive solution.
      * */
-    void traverseDfsPostOrder();
+    void traverseDfsPostOrder(BTNode root);
+
+    /**
+     * Prints the elements level wise. Iterative Solution.
+     * */
+    void traverseBfsLvlOrder();
 
     /**
      *
      * In case of an un-ordered binary tree:-
-     * Builds a COMPLETE binary tree with only last level not completely filled and elements to the left most.
+     * Builds a COMPLETE binary tree possibly with only last level not completely filled and elements to the left most.
      *
      * Insert follows pre-order principal to add new elements to the tree.
      *
@@ -42,10 +48,8 @@ public interface BinaryTree {
     int insertNode(int value);
 
     /**
-     * traverse level wise
+     * Returns true if the element in the parameter to the function exist in the binary tree.
      * */
-    void traverseBfsLvlOrder();
-
     boolean lookUp (int value);
 
     /**
@@ -120,7 +124,9 @@ public interface BinaryTree {
      * */
     void addTrees(BTNode tree1, BTNode tree2);
 
-    /***/
+    /**
+     * Yet to finalize on the algorithm for delete
+     * */
     void delete(int value);
 
     /**
@@ -133,12 +139,4 @@ public interface BinaryTree {
      * This method mirrors the original binary tree in place and do not create a new mirror
      * */
     void mirrorSelf();
-
-    /**
-     * This problem realizes the fact that ordered binary tree (Binary search tree) is implemented using node structure
-     * exactly same as that of a doubly linked list except the naming convention.
-     *
-     * This function converts a BST into an ordered doubly circular linked list.
-     * */
-    void treeList();
 }
