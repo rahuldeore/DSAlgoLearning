@@ -413,7 +413,33 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public void doubleTree() {
-        // TODO implementation remaining
+        Stack<BTNode> stack = new Stack<BTNode>();
+        BTNode node = new BTNode();
+        BTNode dupeNode = new BTNode();
+        if (root == null) {
+            return;
+        }
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            node = stack.pop();
+            dupeNode = copyNode(node);
+            if (dupeNode.leftChild != null) {
+                if (node.rightChild != null) {
+                    stack.push(node.rightChild);
+                }
+                stack.push(dupeNode.leftChild);
+            }
+        }
+        traverseBfsLvlOrder(root);
+        inOrderTraversal(root);
+    }
+
+    private BTNode copyNode(BTNode node) {
+        BTNode temp = new BTNode();
+        temp.value = node.value;
+        temp.leftChild = node.leftChild;
+        node.leftChild = temp;
+        return temp;
     }
 
     @Override

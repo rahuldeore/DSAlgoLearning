@@ -134,4 +134,9 @@ class BinaryTreeImplTest {
         System.out.println("Height of Binary Tree: " + binaryTree.height());
         System.out.println("Height from Root Node: " + binaryTree.height(binaryTree.getRoot()));
     }
+
+    @Test
+    void doubleTreeTest() {
+        binaryTree.doubleTree();
+    }
 }
