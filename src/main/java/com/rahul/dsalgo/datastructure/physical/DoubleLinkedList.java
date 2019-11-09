@@ -6,7 +6,7 @@ package com.rahul.dsalgo.datastructure.physical;
 public interface DoubleLinkedList extends LinkedList{
 
     /**
-     * Prints the list in reverse order
+     * Prints the list in reverse order using tail pointer
      * */
     void printReverse();
 

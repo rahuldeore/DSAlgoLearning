@@ -40,7 +40,7 @@ public class ArrayImpl implements Array {
         }
     }
 
-    // TODO This is not yet implemented
+    // TODO This is not yet implemented. This operation will need array shifting.
     @Override
     public int insert(int position, int element) {
         return 0;
