@@ -5,7 +5,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BinaryTreeImplTest {
 
@@ -62,6 +64,17 @@ class BinaryTreeImplTest {
     @Test
     void insertNodeTest() {
         assertEquals(8,binaryTree.insertNode(16));
+    }
+
+    @Test
+    void insertTest() {
+        BinaryTreeImpl binaryTree1 = new BinaryTreeImpl();
+        binaryTree1.create();
+        for (int i=1; i<10; i++) {
+            binaryTree1.insert(i);
+        }
+        binaryTree1.traverseBfsLvlOrder(binaryTree1.getRoot());
+        binaryTree1.traverseDfsInOrder(binaryTree1.getRoot());
     }
 
     @Test
@@ -138,5 +151,84 @@ class BinaryTreeImplTest {
     @Test
     void doubleTreeTest() {
         binaryTree.doubleTree();
+    }
+
+    @Test
+    void sameTreeTest() {
+        BinaryTreeImpl binaryTree1 = new BinaryTreeImpl();
+        binaryTree1.create();
+        for (int i=1; i<16; i++){
+            binaryTree1.insertNode(i);
+        }
+
+        BinaryTreeImpl binaryTree2 = new BinaryTreeImpl();
+        binaryTree2.create();
+        for (int i=1; i<9; i++){
+            binaryTree2.insertNode(i);
+        }
+        assertFalse(binaryTree.sameTree(binaryTree.getRoot(), binaryTree2.getRoot()));
+        assertTrue(binaryTree.sameTree(binaryTree.getRoot(), binaryTree1.getRoot()));
+        assertFalse(binaryTree.sameTree(binaryTree1.getRoot(), binaryTree2.getRoot()));
+    }
+
+    @Test
+    void sameTreeIterativeTest() {
+        BinaryTreeImpl binaryTree1 = new BinaryTreeImpl();
+        binaryTree1.create();
+        for (int i=1; i<16; i++) {
+            binaryTree1.insertNode(i);
+        }
+
+        BinaryTreeImpl binaryTree2 = new BinaryTreeImpl();
+        binaryTree2.create();
+        for (int i=1; i<18; i++) {
+            binaryTree2.insertNode(i);
+        }
+
+        assertTrue(binaryTree.sameTreeIterative(binaryTree.getRoot(), binaryTree1.getRoot()));
+        assertFalse(binaryTree.sameTreeIterative(binaryTree.getRoot(), binaryTree2.getRoot()));
+        assertFalse(binaryTree.sameTreeIterative(binaryTree1.getRoot(), binaryTree2.getRoot()));
+    }
+
+    @Test
+    void addTreesTest() {
+        BinaryTreeImpl binaryTree1 = new BinaryTreeImpl();
+        binaryTree1.create();
+        for (int i=1; i<16; i++) {
+            binaryTree1.insertNode(i);
+        }
+
+        assertTrue(binaryTree.addTrees(binaryTree.getRoot(), binaryTree1.getRoot()));
+        binaryTree.traverseBfsLvlOrder(binaryTree.getRoot());
+
+        BinaryTreeImpl binaryTree2 = new BinaryTreeImpl();
+        binaryTree2.create();
+        for (int i=1; i<4; i++) {
+            binaryTree2.insertNode(i);
+        }
+
+        assertTrue(binaryTree.addTrees(binaryTree.getRoot(), binaryTree2.getRoot()));
+        binaryTree.traverseBfsLvlOrder(binaryTree.getRoot());
+    }
+
+    @Test
+    void postOrderTraversalTest() {
+        binaryTree.postOrderTraversal(binaryTree.getRoot());
+    }
+
+    @Test
+    void deleteTest() {
+        binaryTree.delete(15);
+        binaryTree.traverseBfsLvlOrder(binaryTree.getRoot());
+        binaryTree.delete(7);
+        binaryTree.traverseBfsLvlOrder(binaryTree.getRoot());
+        binaryTree.delete(7);
+        binaryTree.traverseBfsLvlOrder(binaryTree.getRoot());
+        binaryTree.delete(2);
+        binaryTree.traverseBfsLvlOrder(binaryTree.getRoot());
+        binaryTree.delete(9);
+        binaryTree.traverseBfsLvlOrder(binaryTree.getRoot());
+        binaryTree.delete(1);
+        binaryTree.traverseBfsLvlOrder(binaryTree.getRoot());
     }
 }

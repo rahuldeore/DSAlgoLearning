@@ -106,7 +106,12 @@ public interface BinaryTree {
     /**
      * Returns true if two binary trees are identical
      * */
-    void sameTree(BTNode tree1, BTNode tree2);
+    boolean sameTree(BTNode tree1, BTNode tree2);
+
+    /**
+     * Returns true if two binary trees are identical. Iterative solution
+     * */
+    boolean sameTreeIterative(BTNode tree1, BTNode tree2);
 
     /**
      * This is not a binary tree programming problem in the ordinary sense -- it's more of a math/combinatorics
@@ -119,10 +124,12 @@ public interface BinaryTree {
     void countTree(int elementCount);
 
     /**
-     * Adds two binary trees to form third one. Addition happens at the node level and resultant tree contains number
-     * of elements equal to max of both trees
+     * Adds two binary trees. Addition happens at the node level and resultant tree contains number
+     * of elements equal to max of both trees. Tree2 values gets added into tree1.
+     *
+     * @return true upon completion of addition otherwise returns false.
      * */
-    void addTrees(BTNode tree1, BTNode tree2);
+     boolean addTrees(BTNode tree1, BTNode tree2);
 
     /**
      * Yet to finalize on the algorithm for delete

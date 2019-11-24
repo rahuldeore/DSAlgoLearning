@@ -92,9 +92,26 @@ public class BinaryTreeImpl implements BinaryTree {
         }
     }
 
-    void postOrderTraversal(BTNode root) {
+    public void postOrderTraversal(BTNode root) {
         System.out.println("Post-order traversal (Iterative)");
-
+        Stack<BTNode> stack = new Stack<BTNode>();
+        BTNode node = null;
+        if (root == null) {
+            return;
+        }
+        stack.push(root);
+        while (!stack.isEmpty()){
+            BTNode tempNode = stack.peek();
+            if (tempNode.rightChild != null && node != tempNode.rightChild) {
+                stack.push(tempNode.rightChild);
+            }
+            if (tempNode.leftChild != null && node != tempNode.rightChild) {
+                stack.push(tempNode.leftChild);
+            } else {
+                node = stack.pop();
+                System.out.print(node.value + " ");
+            }
+        }
     }
 
     @Override
@@ -151,6 +168,36 @@ public class BinaryTreeImpl implements BinaryTree {
         System.out.println();
     }
 
+    /*
+    * This function uses level order algorithm to insert in next free spot
+    * */
+    public void insert(int value){
+        Queue<BTNode> queue = new LinkedList<BTNode>();
+        BTNode node = null;
+        if (root == null || root.value == Integer.MIN_VALUE) {
+            root.value = value;
+            return;
+        }
+        queue.add(root);
+        while (!queue.isEmpty()){
+            node = queue.remove();
+            if (node.leftChild != null) {
+                queue.add(node.leftChild);
+            } else {
+                node.leftChild = new BTNode();
+                node.leftChild.value = value;
+                return;
+            }
+            if (node.rightChild != null) {
+                queue.add(node.rightChild);
+            } else {
+                node.rightChild = new BTNode();
+                node.rightChild.value = value;
+                return;
+            }
+        }
+
+    }
 
     @Override
     public int insertNode(int value) {
@@ -251,26 +298,31 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public int maxDepth() {
+        // TODO Implementation remaining
         return treeDepth;
     }
 
     @Override
     public int maxDepth(BTNode node) {
+        // TODO Implementation remaining
         return node.nodeDepth;
     }
 
     @Override
     public int size() {
+        // TODO Implementation remaining
         return nodeCount;
     }
 
     @Override
     public int height() {
+        // TODO Implementation remaining
         return treeDepth;
     }
 
     @Override
     public int height(BTNode node) {
+        // TODO Implementation remaining
         return treeDepth-node.nodeDepth;
     }
 
@@ -349,6 +401,7 @@ public class BinaryTreeImpl implements BinaryTree {
         return false;
     }
 
+    // TODO Re-write this without using nodeDepth variable of node structure. Also write the recursive version.
     @Override
     public void printPaths() {
         BTNode node = root;
@@ -371,6 +424,9 @@ public class BinaryTreeImpl implements BinaryTree {
                         path = path + " " + pathNode.value;
                     }
                     System.out.println("Path: " + path);
+                    // Remove nodes from queue that are at level equal or greater than the one on top of the stack. This
+                    // means, stack has either elements that are right child of the ones in queue or siblings. This is
+                    // valid only in case of complete binary tree.
                     while (!stack.isEmpty() && stack.peek().nodeDepth <= que.get(que.size()-1).nodeDepth) {
                         que.remove(que.size()-1);
                     }
@@ -442,9 +498,59 @@ public class BinaryTreeImpl implements BinaryTree {
         return temp;
     }
 
+    /**
+     * This is a recursive solution. Find iterative and better solution
+     * */
     @Override
-    public void sameTree(BTNode tree1, BTNode tree2) {
-        // TODO implementation remaining
+    public boolean sameTree(BTNode node1, BTNode node2) {
+        if (node1 != null && node2 != null) {
+            if (node1.value == node2.value) {
+                return sameTree(node1.leftChild, node2.leftChild) && sameTree(node1.rightChild, node2.rightChild);
+            } else {
+                return false;
+            }
+        } else if (node1 == null && node2 == null){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * This is iterative solution to sameTree problem.
+     * */
+    @Override
+    public boolean sameTreeIterative(BTNode tree1, BTNode tree2) {
+        Stack<BTNode> stack = new Stack<BTNode>();
+        BTNode node1, node2;
+        stack.push(tree1);
+        stack.push(tree2);
+        while (!stack.isEmpty()) {
+            node2 = stack.pop();
+            node1 = stack.pop();
+            if (node1.value == node2.value) {
+                if (node1.rightChild != null && node2.rightChild != null) {
+                    stack.push(node1.rightChild);
+                    stack.push(node2.rightChild);
+                } else if (node1.rightChild == null && node2.rightChild == null) {
+                    continue;
+                } else {
+                    return false;
+                }
+
+                if (node1.leftChild != null && node2.leftChild != null) {
+                    stack.push(node1.leftChild);
+                    stack.push(node2.leftChild);
+                } else if (node1.leftChild == null && node2.leftChild == null) {
+                    continue;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -452,15 +558,187 @@ public class BinaryTreeImpl implements BinaryTree {
         // TODO implementation remaining
     }
 
+    /**
+     *    Sum the nodes of left tree with right.
+     *    Follows the pre-order algorithm on right tree and if right tree is larger/different size than left tree,
+     *    new node is added to the left tree.
+     *
+     *    Case1: If left tree node exist and right tree node exist, add.
+     *    Case2: If left tree node does not exist but right tree node exist (also possible in case right tree is larger),
+     *        create new node for left tree and copy right tree node value.
+     *    Case3: If left tree node exist but right tree node does not, skip any more traversal on that path of right tree.
+     * */
     @Override
-    public void addTrees(BTNode tree1, BTNode tree2) {
-        // TODO implementation remaining
+    public boolean addTrees(BTNode leftTreeNode, BTNode rightTreeNode) {
+
+        Stack<BTNode> rightStack = new Stack<BTNode>();
+        Stack<BTNode> leftStack = new Stack<BTNode>();
+        if (leftTreeNode == null || rightTreeNode== null) {
+            return false;
+        } else {
+            rightStack.push(rightTreeNode);
+            leftStack.push(leftTreeNode);
+            while (!rightStack.isEmpty()) {
+                leftTreeNode = leftStack.pop();
+                rightTreeNode = rightStack.pop();
+                leftTreeNode.value += rightTreeNode.value;
+
+                if (rightTreeNode.rightChild != null) {
+                    rightStack.push(rightTreeNode.rightChild);
+                    if (leftTreeNode.rightChild != null) {
+                        leftStack.push(leftTreeNode.rightChild);
+                    } else {
+                        leftTreeNode.rightChild = new BTNode();
+                        leftTreeNode.rightChild.value = 0; // set to zero instead of minvalue
+                    }
+                }
+
+                if (rightTreeNode.leftChild != null) {
+                    rightStack.push(rightTreeNode.leftChild);
+                    if (leftTreeNode.leftChild != null) {
+                        leftStack.push(leftTreeNode.leftChild);
+                    } else {
+                        leftTreeNode.leftChild = new BTNode();
+                        leftTreeNode.leftChild.value = 0;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
+    /**
+     * Deletes first occurrence of the node with given value. For deleting all occurrences, remove the return statement.
+     * */
     @Override
     public void delete(int value) {
-        // TODO Need to decide on the delete algorithm. Which child node becomes the parent when non leaf node is
-        //  deleted
+        Queue<BTNode> que = new LinkedList<BTNode>();
+        BTNode node = new BTNode();
+        node = root;
+        if (node == null) {
+            return;
+        }
+        if (root.value == value){
+            BTNode newNode = evaluateAndMove(root, root, que);
+            if (newNode != null) {
+                newNode.leftChild = root.leftChild;
+                newNode.rightChild = root.rightChild;
+                root.leftChild = null;
+                root.rightChild = null;
+                root = newNode;
+                return;
+            }
+        }
+        que.add(node);
+        while (!que.isEmpty()) {
+            node = que.remove();
+            if (node.leftChild != null) {
+                que.add(node.leftChild);
+                if (node.leftChild.value == value) {
+                    BTNode newNode = evaluateAndMove(node, node.leftChild, que);
+                    if (newNode != null) {
+                        newNode.leftChild = node.leftChild.leftChild;
+                        newNode.rightChild = node.leftChild.rightChild;
+                        node.leftChild = newNode;
+                        return;
+                    }
+                }
+            }
+            if (node.rightChild != null) {
+                que.add(node.rightChild);
+                if (node.rightChild.value == value) {
+                    BTNode newNode = evaluateAndMove(node, node.rightChild, que);
+                    if (newNode != null) {
+                        newNode.leftChild = node.rightChild.leftChild;
+                        newNode.rightChild = node.rightChild.rightChild;
+                        node.rightChild = newNode;
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Evaluates the case of node for deletion and returns node in third case from below
+     * 1. node has no children
+     * 2. node has 1 child only
+     * 3. node has two children
+     * @return Reference to the leaf node for insertion at the place of deleted node
+     * @param node parent of the node to be deleted
+     * @param que queue reference from previous function to avoid unnecessary traversal
+     * @param nodeToDelete reference to the node for deletion
+     * */
+    private BTNode evaluateAndMove(BTNode node, BTNode nodeToDelete, Queue<BTNode> que) {
+        if (nodeToDelete.leftChild != null && nodeToDelete.rightChild != null){
+            // This will have reference to parent of right most leaf node
+            BTNode newNode = findNewNode(node, que);
+            BTNode tempNode;
+            if (newNode.rightChild != null) {
+                tempNode = newNode.rightChild;
+                newNode.rightChild = null;
+                return tempNode;
+            } else {
+                tempNode = newNode.leftChild;
+                newNode.leftChild = null;
+                return tempNode;
+            }
+        } else if (nodeToDelete.leftChild != null) {
+            // Since we build a complete binary tree, if first condition fails to satisfy, its either missing right
+            // child or both children
+            if (node.leftChild == nodeToDelete) {
+                node.leftChild = nodeToDelete.leftChild;
+            } else {
+                node.rightChild = nodeToDelete.leftChild;
+            }
+            return null;
+        } else  {
+            // No need of any move, just delete the node
+            // TODO implement the case when delete node is not the rightmost leaf. Do I create a re-balance method ?
+            if (node.leftChild == nodeToDelete) {
+                node.leftChild = node.rightChild;
+                node.rightChild = null;
+            } else {
+                node.rightChild = null;
+            }
+            return null;
+        }
+    }
+
+    /**
+     * Traverses the tree level order wise and finds the rightmost leaf node to become the next parent in place of
+     * deleted node
+     * @param node reference to a node to level order traverse from
+     * @param queue reference the queue used for level order traversal
+     * @return reference to the rightmost leaf node
+     * */
+    private BTNode findNewNode(BTNode node, Queue<BTNode> queue) {
+        // This is the parent of rightmost leaf. We need parent node reference to unlink rightmost leaf.
+        BTNode parentOfLeaf = node;
+        /*
+        The if ensures that we have added both children of the node we are currently working on. If right is missing,
+        left must be already added to the queue since its a complete binary tree implementation
+        * */
+        if (queue.peek() != node.rightChild) {
+            queue.add(node.rightChild);
+        }
+        while (!queue.isEmpty()){
+            node = queue.remove();
+            if (node.leftChild != null) {
+                queue.add(node.leftChild);
+                parentOfLeaf = node;
+            } else {
+                break;
+            }
+            if(node.rightChild != null) {
+                queue.add(node.rightChild);
+                parentOfLeaf = node;
+            } else {
+                parentOfLeaf = node;
+                break;
+            }
+        }
+        return parentOfLeaf;
     }
 
     @Override
@@ -468,6 +746,9 @@ public class BinaryTreeImpl implements BinaryTree {
         // TODO Need to understand this properly
     }
 
+    /**
+     * Mirrors the tree in-place
+     * */
     @Override
     public void mirrorSelf() {
         // TODO Implementation remaining

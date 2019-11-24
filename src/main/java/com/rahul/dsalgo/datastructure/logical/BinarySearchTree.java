@@ -13,4 +13,7 @@ public interface BinarySearchTree extends BinaryTree{
      * http://cslibrary.stanford.edu/109/
      * */
     void treeList();
+
+    void deleteNode(int value);
+
 }
