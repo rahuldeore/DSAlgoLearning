@@ -2,6 +2,8 @@ package com.rahul.dsalgo.datastructureImpl.logical;
 
 import com.rahul.dsalgo.datastructure.logical.BinaryTree;
 
+import java.util.Stack;
+
 /**
  *
  * This class implements Binary Tree using Arrays
@@ -83,20 +85,63 @@ public class BinaryTreeArrayImpl extends BinaryTreeImpl implements BinaryTree {
             System.out.print(tree[i] + " ");
         }
     }
+
     /**
      * Iterative pre-order traversal of binary tree array
      * */
     public void preOrderTraversal() {
+        System.out.println("Iterative pre-order traversal of Binary tree array impl");
+        Stack<Integer> stack = new Stack<Integer>();
+        if (insertIndex != 0) { // if array is not empty
+            int traverseIndex = 0;
+            stack.push(traverseIndex);
+            while (!stack.isEmpty()) {
+                traverseIndex = stack.pop();
+                System.out.print(tree[traverseIndex] + " ");
+                if (rightGuardCondition(traverseIndex) &&
+                        (tree[(traverseIndex * 2) + 2] != 0 || tree[(traverseIndex * 2) + 2] != Integer.MIN_VALUE)) {
+                    stack.push(traverseIndex * 2 + 2); // push right child index
+                }
+                if (leftGuardCondition(traverseIndex)  &&
+                        (tree[(traverseIndex * 2) + 1] != 0 || tree[(traverseIndex * 2) + 1] != Integer.MIN_VALUE)) {
+                    stack.push(traverseIndex * 2 + 1); // push left child index
+                }
+            }
+        }
+    }
 
+    private boolean leftGuardCondition(int traverseIndex) {
+        return (traverseIndex * 2 + 1) < insertIndex;
+    }
+
+    private boolean rightGuardCondition(int traverseIndex) {
+        return (traverseIndex * 2 + 2) < insertIndex;
     }
 
     /**
      * Iterative in-order traversal of binary tree array implementation
      * */
     public void inOrderTraversal() {
+        Stack<Integer> stack = new Stack<Integer>();
+        if (insertIndex != 0) { // Tree is not empty
+            int traverseIndex = 0;
+            stack.push(traverseIndex); // start traversal from 0th index
+            while (!stack.isEmpty()) {
+                traverseIndex = stack.peek();
+                if (leftGuardCondition(traverseIndex) &&
+                        tree[traverseIndex * 2 + 1] != Integer.MIN_VALUE || tree[traverseIndex * 2 + 1] != 0 ) {
+                    stack.push(traverseIndex * 2 + 1);
+                } else {
 
+                }
+
+            }
+        }
     }
 
+    /**
+     * Iterative post-order traversal of binary tree array implementation
+     * */
     public void postOrderTraversal() {
 
     }

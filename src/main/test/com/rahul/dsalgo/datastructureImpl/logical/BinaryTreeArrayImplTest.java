@@ -55,4 +55,9 @@ class BinaryTreeArrayImplTest {
         System.out.println("Binary Tree Array Impl BFS Level-Order Traversal");
         binaryTreeArray.traverseLevelOrder();
     }
+
+    @Test
+    void preOrderTraversalTest() {
+        binaryTreeArray.preOrderTraversal();
+    }
 }

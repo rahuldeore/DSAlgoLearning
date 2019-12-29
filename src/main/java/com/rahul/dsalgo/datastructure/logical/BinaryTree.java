@@ -73,7 +73,7 @@ public interface BinaryTree {
     int height();
 
     /**
-     * returns height of a particular node in Binary tree
+     * Calculates and return height of a particular node in Binary tree
      * */
     int height(BTNode node);
 
@@ -146,4 +146,10 @@ public interface BinaryTree {
      * This method mirrors the original binary tree in place and do not create a new mirror
      * */
     void mirrorSelf();
+
+    /**
+     * Returns the reference to a node in binary tree having value in the parameter. In-case node doesn't exist,
+     * returns null
+     * */
+    BTNode getNode(int value);
 }

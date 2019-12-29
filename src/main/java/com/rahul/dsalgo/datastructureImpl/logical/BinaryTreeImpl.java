@@ -7,7 +7,9 @@ import java.util.*;
 
 /**
  * This is un-ordered binary tree implementation that follows the principal of complete binary tree. All levels except
- * possibly the last level is completely filled and the elements in the last level are all to the left.
+ * possibly the last level is completely filled and the elements in the last level are all to the left.a
+ *
+ * Some operations of this class do not work for child implementations like BST or AVL.
  *
  * Created by Rahul on 10/19/19
  */
@@ -24,13 +26,17 @@ public class BinaryTreeImpl implements BinaryTree {
         return this.root;
     }
 
+    public void setRoot(BTNode root) {
+        this.root = root;
+    }
+
     public BinaryTreeImpl() {
     }
 
     @Override
     public void create() {
         root = new BTNode();
-        stack = new Stack<BTNode>();
+        stack = new Stack<>();
         nodeCount = 0;
         treeDepth = 0;
         leafCount = 0;
@@ -42,7 +48,7 @@ public class BinaryTreeImpl implements BinaryTree {
      * */
     public void preOrderTraversal(BTNode root) {
         System.out.println("Pre-Order traversal (Iterative)");
-        Stack<BTNode> stack = new Stack<BTNode>();
+        Stack<BTNode> stack = new Stack<>();
         BTNode node = root;
         if (node == null) {
             return;
@@ -62,13 +68,32 @@ public class BinaryTreeImpl implements BinaryTree {
     }
 
     /**
+     * Simpler algorithm to do pre-order traversal. Code is also simplified
+     * */
+    public List<BTNode> preOrderTraversal_V2(BTNode root) {
+        Stack<BTNode> stack = new Stack<>();
+        List<BTNode> preOrder = new ArrayList<>();
+        BTNode currNode = root;
+        stack.push(currNode);
+        while (!stack.isEmpty()) {
+            currNode = stack.pop();
+            if (currNode != null) {
+                preOrder.add(currNode);
+                stack.push(currNode.rightChild);
+                stack.push(currNode.leftChild);
+            }
+        }
+        return preOrder;
+    }
+
+    /**
      * TODO check runtime
      * This method prints the binary tree in-order and uses iteration rather than recursion
      * @param
      * */
     public void inOrderTraversal(BTNode root) {
         System.out.println("In-order traversal (Iterative)");
-        Stack<BTNode> stack = new Stack<BTNode>();
+        Stack<BTNode> stack = new Stack<>();
         BTNode node = null;
         if (root == null) {
             return;
@@ -92,9 +117,31 @@ public class BinaryTreeImpl implements BinaryTree {
         }
     }
 
+    /**
+     * Simpler version of in-order traversal. Code is also simplified and algorithm is different.
+     * */
+    public List<BTNode> inOrderTraversal_V2(BTNode root) {
+        Stack<BTNode> stack = new Stack<>();
+        List<BTNode> inOrder = new ArrayList<>();
+        BTNode currNode = root;
+
+        while (currNode != null || !stack.isEmpty()) {
+            while (currNode != null) {
+                stack.push(currNode);
+                currNode = currNode.leftChild;
+            }
+            currNode = stack.pop();
+            inOrder.add(currNode);
+            currNode = currNode.rightChild;
+        }
+        return inOrder;
+    }
+    /*
+    * Works only for complete binary tree. Not generic.
+    * */
     public void postOrderTraversal(BTNode root) {
         System.out.println("Post-order traversal (Iterative)");
-        Stack<BTNode> stack = new Stack<BTNode>();
+        Stack<BTNode> stack = new Stack<>();
         BTNode node = null;
         if (root == null) {
             return;
@@ -112,6 +159,45 @@ public class BinaryTreeImpl implements BinaryTree {
                 System.out.print(node.value + " ");
             }
         }
+    }
+
+    public LinkedList<BTNode> postOrderTraversalCorrected(BTNode root) {
+        Stack<BTNode> stack = new Stack<>();
+        LinkedList<BTNode> res = new LinkedList<>();
+        BTNode lastVisited = null,  currNode = root, peekNode = null ;
+        while (currNode != null || !stack.isEmpty()) {
+            if (currNode != null) {
+                stack.push(currNode);
+                currNode = currNode.leftChild;
+            } else {
+                peekNode = stack.peek();
+                if (peekNode.rightChild != null && lastVisited != peekNode.rightChild) {
+                    currNode = peekNode.rightChild;
+                } else {
+                    lastVisited = stack.pop();
+                    res.add(lastVisited);
+                }
+            }
+        }
+        return res;
+    }
+
+    public List<BTNode> postOrderTraversal_V2(BTNode root) {
+        Stack<BTNode> stack = new Stack<>();
+        List<BTNode> postOrder = new ArrayList<>();
+        BTNode currNode ;
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            currNode = stack.pop();
+            postOrder.add(0, currNode);
+            if (currNode.leftChild != null) {
+                stack.push(currNode.leftChild);
+            }
+            if (currNode.rightChild != null) {
+                stack.push(currNode.rightChild);
+            }
+        }
+        return postOrder;
     }
 
     @Override
@@ -153,7 +239,7 @@ public class BinaryTreeImpl implements BinaryTree {
         if (node == null) {
             return;
         }
-        List<BTNode> que = new ArrayList<BTNode>();
+        List<BTNode> que = new ArrayList<>();
         que.add(node);
         while ( !que.isEmpty() ){
             node = que.remove(0);
@@ -172,7 +258,7 @@ public class BinaryTreeImpl implements BinaryTree {
     * This function uses level order algorithm to insert in next free spot
     * */
     public void insert(int value){
-        Queue<BTNode> queue = new LinkedList<BTNode>();
+        Queue<BTNode> queue = new LinkedList<>();
         BTNode node = null;
         if (root == null || root.value == Integer.MIN_VALUE) {
             root.value = value;
@@ -225,7 +311,7 @@ public class BinaryTreeImpl implements BinaryTree {
     private int findLeafSpotAndIns (BTNode node, int value) {
         int retVal = Integer.MIN_VALUE;
         while (true) {
-            if (node.nodeDepth < treeDepth) {
+            if (node.depth < treeDepth) {
                 if (node.leftChild != null) {
                     if (node.rightChild != null) {
                         stack.push(node.rightChild);
@@ -257,7 +343,7 @@ public class BinaryTreeImpl implements BinaryTree {
     private int addChild(BTNode parent, int value, boolean leftInsert) {
         BTNode newNode = new BTNode();
         newNode.value = value;
-        newNode.nodeDepth = treeDepth;
+        newNode.depth = treeDepth;
         if (leftInsert){
             parent.leftChild = newNode;
         } else {
@@ -275,7 +361,7 @@ public class BinaryTreeImpl implements BinaryTree {
     @Override
     public boolean lookUp(int value) {
         BTNode node = root;
-        Stack<BTNode> lookupStack = new Stack<BTNode>();
+        Stack<BTNode> lookupStack = new Stack<>();
         while (true){
             if (node.value == value){
                 return true;
@@ -305,7 +391,7 @@ public class BinaryTreeImpl implements BinaryTree {
     @Override
     public int maxDepth(BTNode node) {
         // TODO Implementation remaining
-        return node.nodeDepth;
+        return node.depth;
     }
 
     @Override
@@ -316,14 +402,31 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public int height() {
-        // TODO Implementation remaining
-        return treeDepth;
+        return height(root);
     }
 
     @Override
-    public int height(BTNode node) {
-        // TODO Implementation remaining
-        return treeDepth-node.nodeDepth;
+    public int height(BTNode root) {
+        Stack<BTNode> stack = new Stack<>();
+        BTNode node = root, lastNode = null;
+        while ( node != null || !stack.isEmpty()) {
+            while (node != null) {
+                stack.push(node);
+                node = node.leftChild;
+            }
+            node = stack.peek();
+            if (node.rightChild != null && lastNode != node.rightChild) {
+                node = node.rightChild;
+            } else {
+                lastNode = stack.pop();
+                // calculate height
+                int leftHeight = node.leftChild != null ? node.leftChild.height : -1;
+                int rightHeight = node.rightChild != null ? node.rightChild.height : -1;
+                node.height = Integer.max(leftHeight, rightHeight) + 1;
+                node = null;
+            }
+        }
+        return root.height;
     }
 
     /**
@@ -340,7 +443,7 @@ public class BinaryTreeImpl implements BinaryTree {
         int level = treeDepth + 1;
 
         BTNode node = root;
-        Queue<BTNode> que = new LinkedList<BTNode>();
+        Queue<BTNode> que = new LinkedList<>();
         que.add(node);
         int currentDepth = -1;
         int spaces=level; // to keep track of spaces for each level
@@ -353,7 +456,7 @@ public class BinaryTreeImpl implements BinaryTree {
                     que.add(node.rightChild);
                 }
             }
-            if (node.nodeDepth == currentDepth) {
+            if (node.depth == currentDepth) {
                 System.out.print(node.value + "\t\t");
             }else {
                 currentDepth++;
@@ -370,8 +473,8 @@ public class BinaryTreeImpl implements BinaryTree {
     public boolean hasPathSum(int sum) {
         BTNode node = root;
 
-        Stack<BTNode> stack = new Stack<BTNode>();
-        List<BTNode> que = new LinkedList<BTNode>();
+        Stack<BTNode> stack = new Stack<>();
+        List<BTNode> que = new LinkedList<>();
 
         stack.push(node);
 
@@ -392,7 +495,7 @@ public class BinaryTreeImpl implements BinaryTree {
                     if (pathSum == sum) {
                         return true;
                     }
-                    while (!stack.isEmpty() && que.get(que.size()-1).nodeDepth >= stack.peek().nodeDepth) {
+                    while (!stack.isEmpty() && que.get(que.size()-1).depth >= stack.peek().depth) {
                         que.remove(que.size()-1);
                     }
                 }
@@ -405,8 +508,8 @@ public class BinaryTreeImpl implements BinaryTree {
     @Override
     public void printPaths() {
         BTNode node = root;
-        Stack<BTNode> stack = new Stack<BTNode>();
-        List<BTNode> que = new LinkedList<BTNode>();
+        Stack<BTNode> stack = new Stack<>();
+        List<BTNode> que = new LinkedList<>();
         stack.push(node);
 
         while (!stack.isEmpty()) {
@@ -427,7 +530,7 @@ public class BinaryTreeImpl implements BinaryTree {
                     // Remove nodes from queue that are at level equal or greater than the one on top of the stack. This
                     // means, stack has either elements that are right child of the ones in queue or siblings. This is
                     // valid only in case of complete binary tree.
-                    while (!stack.isEmpty() && stack.peek().nodeDepth <= que.get(que.size()-1).nodeDepth) {
+                    while (!stack.isEmpty() && stack.peek().depth <= que.get(que.size()-1).depth) {
                         que.remove(que.size()-1);
                     }
                 }
@@ -442,8 +545,8 @@ public class BinaryTreeImpl implements BinaryTree {
 
         BTNode node = root;
 
-        Stack<BTNode> stack = new Stack<BTNode>();
-        Stack<BTNode> rStack = new Stack<BTNode>();
+        Stack<BTNode> stack = new Stack<>();
+        Stack<BTNode> rStack = new Stack<>();
 
         stack.push(node);
         rStack.push(mirrorNode);
@@ -469,7 +572,7 @@ public class BinaryTreeImpl implements BinaryTree {
 
     @Override
     public void doubleTree() {
-        Stack<BTNode> stack = new Stack<BTNode>();
+        Stack<BTNode> stack = new Stack<>();
         BTNode node = new BTNode();
         BTNode dupeNode = new BTNode();
         if (root == null) {
@@ -521,7 +624,7 @@ public class BinaryTreeImpl implements BinaryTree {
      * */
     @Override
     public boolean sameTreeIterative(BTNode tree1, BTNode tree2) {
-        Stack<BTNode> stack = new Stack<BTNode>();
+        Stack<BTNode> stack = new Stack<>();
         BTNode node1, node2;
         stack.push(tree1);
         stack.push(tree2);
@@ -571,8 +674,8 @@ public class BinaryTreeImpl implements BinaryTree {
     @Override
     public boolean addTrees(BTNode leftTreeNode, BTNode rightTreeNode) {
 
-        Stack<BTNode> rightStack = new Stack<BTNode>();
-        Stack<BTNode> leftStack = new Stack<BTNode>();
+        Stack<BTNode> rightStack = new Stack<>();
+        Stack<BTNode> leftStack = new Stack<>();
         if (leftTreeNode == null || rightTreeNode== null) {
             return false;
         } else {
@@ -612,7 +715,7 @@ public class BinaryTreeImpl implements BinaryTree {
      * */
     @Override
     public void delete(int value) {
-        Queue<BTNode> que = new LinkedList<BTNode>();
+        Queue<BTNode> que = new LinkedList<>();
         BTNode node = new BTNode();
         node = root;
         if (node == null) {
@@ -752,5 +855,30 @@ public class BinaryTreeImpl implements BinaryTree {
     @Override
     public void mirrorSelf() {
         // TODO Implementation remaining
+    }
+
+    /*
+    * This method can use preorder or level order traversal for finding the value in the tree.
+    * */
+    @Override
+    public BTNode getNode(int value) {
+        if (root == null) {
+            return null;
+        }
+        Stack<BTNode> stack = new Stack<>();
+        BTNode node = root;
+        stack.push(node);
+        while (!stack.isEmpty()) {
+            node = stack.pop();
+            if (node != null) {
+                if (node.value == value) {
+                    return node;
+                } else {
+                    stack.push(node.rightChild);
+                    stack.push(node.leftChild);
+                }
+            }
+        }
+        return null;
     }
 }

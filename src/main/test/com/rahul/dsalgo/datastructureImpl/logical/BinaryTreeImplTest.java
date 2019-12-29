@@ -5,6 +5,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -122,6 +125,21 @@ class BinaryTreeImplTest {
     void preOrderTraversalTest() {
         // iterative function test
         binaryTree.preOrderTraversal(binaryTree.getRoot());
+        /*
+        * V2
+        * */
+        System.out.println("\nPre-Order traversal V2 (Iterative)");
+        List<BTNode> list= binaryTree.preOrderTraversal_V2(binaryTree.getRoot());
+        for (BTNode node : list) {
+            System.out.print(node.value + " ");
+        }
+
+        System.out.println("\nPre-Order traversal Corrected (Iterative)");
+        LinkedList<BTNode> list2= binaryTree.postOrderTraversalCorrected(binaryTree.getRoot());
+        for (BTNode node : list2) {
+            System.out.print(node.value + " ");
+        }
+
     }
 
     @Test
@@ -135,6 +153,14 @@ class BinaryTreeImplTest {
         binaryTree.insertNode(21);
         binaryTree.insertNode(22);
         binaryTree.inOrderTraversal(binaryTree.getRoot());
+        /*
+        * V2
+        * */
+        System.out.println("\nIn-Order traversal V2 (Iterative)");
+        List<BTNode> list = binaryTree.inOrderTraversal_V2(binaryTree.getRoot());
+        for (BTNode node : list) {
+            System.out.print(node.value + " ");
+        }
     }
 
     @Test
@@ -146,6 +172,9 @@ class BinaryTreeImplTest {
         System.out.println("Binary Tree Size: " + binaryTree.size());
         System.out.println("Height of Binary Tree: " + binaryTree.height());
         System.out.println("Height from Root Node: " + binaryTree.height(binaryTree.getRoot()));
+        System.out.println("Height of leaf node 15: " + binaryTree.height(binaryTree.getNode(15)));
+        System.out.println("Height of leaf node 8: " + binaryTree.height(binaryTree.getNode(8)));
+        System.out.println("Height of non-leaf node 3: " + binaryTree.height(binaryTree.getNode(3)));
     }
 
     @Test
@@ -214,6 +243,24 @@ class BinaryTreeImplTest {
     @Test
     void postOrderTraversalTest() {
         binaryTree.postOrderTraversal(binaryTree.getRoot());
+
+        /*
+        * V2
+        * */
+        List<BTNode> list = binaryTree.postOrderTraversal_V2(binaryTree.getRoot());
+        System.out.println("\nPost order traversal V2 (iterative)");
+        for (BTNode node : list) {
+            System.out.print(node.value + " ");
+        }
+
+        /*
+        * Correct algorithm to work on all types of binary trees
+        * */
+        LinkedList<BTNode> list2 = binaryTree.postOrderTraversalCorrected(binaryTree.getRoot());
+        System.out.println("\nPost order traversal corrected for non-complete binary tree (iterative)");
+        for (BTNode node : list2) {
+            System.out.print(node.value + " ");
+        }
     }
 
     @Test

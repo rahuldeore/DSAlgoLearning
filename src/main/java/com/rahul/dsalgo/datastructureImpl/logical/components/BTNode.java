@@ -7,5 +7,7 @@ public class BTNode {
     public int value = Integer.MIN_VALUE;
     public BTNode leftChild = null;
     public BTNode rightChild = null;
-    public int nodeDepth;
+    //Maybe i need just one of the below and not both
+    public int depth;
+    public int height=0; // a leaf node has height 0
 }
