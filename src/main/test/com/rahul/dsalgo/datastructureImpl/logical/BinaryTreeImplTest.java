@@ -97,7 +97,7 @@ class BinaryTreeImplTest {
 
     @Test
     void printTreeTest(){
-        binaryTree.printTree();
+        binaryTree.printTree(binaryTree.getRoot());
     }
 
     @Test

@@ -79,8 +79,9 @@ public interface BinaryTree {
 
     /**
      * Prints the tree in fancy visuals
-     * */
-    void printTree();
+     *
+     * @param root*/
+    void printTree(BTNode root);
 
     /**
      * Returns true if there exist a path from root to a leaf node that sums up to the parameter variable sum

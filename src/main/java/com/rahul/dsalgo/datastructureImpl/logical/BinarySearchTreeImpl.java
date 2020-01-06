@@ -19,16 +19,6 @@ public class BinarySearchTreeImpl extends BinaryTreeImpl implements BinarySearch
         return root;
     }
 
-    @Override
-    public void setRoot(BTNode root) {
-        this.root = root;
-        setSuperRoot(this.root);
-    }
-
-    void setSuperRoot(BTNode root) {
-        super.setRoot(this.root);
-    }
-
     BTNode getSuperRoot() {
         return super.getRoot();
     }

@@ -18,29 +18,13 @@ public class AVLTreeImpl extends BinarySearchTreeImpl implements AVLTree {
         return root;
     }
 
-    @Override
-    public void setRoot(BTNode root) {
-        this.root = root;
-    }
-
-    void setSuperRoot(BTNode root) {
-        super.setRoot(this.root);
-    }
-
-    BTNode getSuperRoot() {
-        return super.getRoot();
-    }
-
     public AVLTreeImpl() {
         create();
-        //setSuperRoot(this.root);
-        //super.setSuperRoot(this.root); // set root of this class to the root of super class' super class
-        //super.setRoot(this.root); // set root of this class to the root of super class
         root = new BTNode();
     }
 
-    @Override
-    public void leftRotate(BTNode root, BTNode parentOfRoot) {
+    //@Override
+    private void leftRotate(BTNode root, BTNode parentOfRoot) {
         BTNode newRoot = root.rightChild;
         root.rightChild = newRoot.leftChild;
         newRoot.leftChild = root;
@@ -53,11 +37,13 @@ public class AVLTreeImpl extends BinarySearchTreeImpl implements AVLTree {
         } else {
             this.root = newRoot;
         }
-        //height(this.root);
+        reCalculateHeight(newRoot.leftChild);
+        reCalculateHeight(newRoot.rightChild);
+        reCalculateHeight(newRoot);
     }
 
-    @Override
-    public void rightRotate(BTNode root, BTNode parentOfRoot) {
+    //@Override
+    private void rightRotate(BTNode root, BTNode parentOfRoot) {
         BTNode newRoot = root.leftChild;
         root.leftChild = newRoot.rightChild;
         newRoot.rightChild = root;
@@ -70,13 +56,23 @@ public class AVLTreeImpl extends BinarySearchTreeImpl implements AVLTree {
         } else {
             this.root = newRoot;
         }
-        //height(this.root);
+        reCalculateHeight(newRoot.leftChild);
+        reCalculateHeight(newRoot.rightChild);
+        reCalculateHeight(newRoot);
     }
 
+    private void reCalculateHeight(BTNode node) {
+        if (node == null) {
+            return;
+        }
+        int leftHeight = node.leftChild != null ? node.leftChild.height : -1;
+        int rightHeight = node.rightChild != null ? node.rightChild.height : -1;
+        node.height = Integer.max(leftHeight, rightHeight) + 1;
+    }
     /*
     * Code is not in use as of now but will be used soon in place of interface implementation.
     * */
-    public BTNode rightRotate(BTNode root) {
+    private BTNode rightRotate(BTNode root) {
         BTNode newRoot =  root.leftChild;
         root.leftChild = newRoot.rightChild;
         newRoot.rightChild = root;
@@ -86,7 +82,7 @@ public class AVLTreeImpl extends BinarySearchTreeImpl implements AVLTree {
     /*
      * Code is not in use as of now but will be used soon in place of interface implementation.
      * */
-    public BTNode leftRotate(BTNode root) {
+    private BTNode leftRotate(BTNode root) {
         BTNode newRoot = root.rightChild;
         root.rightChild = newRoot.leftChild;
         newRoot.leftChild = root;
@@ -164,5 +160,116 @@ public class AVLTreeImpl extends BinarySearchTreeImpl implements AVLTree {
                 }
             }
         }
+    }
+
+    @Override
+    public void delete(int value) {
+        if (root == null) {
+            return;
+        }
+        if (value == root.value) {
+            evaluateAndDelete(null);
+        }
+        BTNode node = root;
+        Stack<BTNode> stack = new Stack<>();
+
+        while (node != null) {
+            stack.push(node);
+            if (value == node.value) {
+                evaluateAndDelete(stack);
+                break;
+            } else {
+                node = value < node.value ? node.leftChild : node.rightChild;
+            }
+
+        }
+    }
+
+    /**
+    * This function evaluates the candidate for delete for one of the tree conditions and also evaluates if
+    * height recalculation and rotations is required for the tree path of that node.
+    *
+    * @param stack of the node path
+    * */
+    private void evaluateAndDelete(Stack<BTNode> stack) {
+        if (stack == null) {
+            // TODO implement root node condition
+            BTNode newRoot = getSmallestFromRightSubTree(root);
+            newRoot.leftChild = root.leftChild;
+            newRoot.rightChild = root.rightChild;
+            root = newRoot;
+            return;
+        }
+        BTNode node = stack.pop();
+        BTNode parentNode = stack.peek();
+        boolean heightRecalculation = false;
+        if (node.leftChild == null && node.rightChild == null) {
+            // Leaf node condition
+            if (parentNode.leftChild == node) {
+                parentNode.leftChild = null;
+            } else {
+                parentNode.rightChild = null;
+            }
+        } else if (node.leftChild == null) {
+            // right child condition
+            if (parentNode.leftChild == node) {
+                parentNode.leftChild = node.rightChild;
+            } else {
+                parentNode.rightChild = node.rightChild;
+            }
+            heightRecalculation = true;
+        } else if (node.rightChild == null) {
+            // left child condition
+            if (parentNode.leftChild == node) {
+                parentNode.leftChild = node.leftChild;
+            } else {
+                parentNode.rightChild = node.leftChild;
+            }
+            heightRecalculation = true;
+        } else {
+            //both child condition. Get the smallest from right sub tree or largest from left sub tree
+            BTNode newSubRoot = getSmallestFromRightSubTree(node);
+            //BTNode newSubRoot = getLargestFromLeftSubTree(node); TODO implement this
+
+            newSubRoot.leftChild = node.leftChild;
+            node.leftChild = null;
+            newSubRoot.rightChild = node.rightChild;
+            node.rightChild = null;
+            if (parentNode.leftChild == node) {
+                parentNode.leftChild = newSubRoot;
+            } else {
+                parentNode.rightChild = newSubRoot;
+            }
+
+            heightRecalculation = true;
+        }
+        if (heightRecalculation == true) {
+            heightRecalculationAndRotation(stack);
+        }
+    }
+    /*
+    * Returns the smallest from right sub tree of node and unlinks the smallest node
+    * */
+    private BTNode getSmallestFromRightSubTree (BTNode node) {
+        BTNode parent = node;
+        node = node.rightChild;
+        while (node.leftChild != null) {
+            parent = node;
+            node = node.leftChild;
+        }
+        if (node.rightChild != null) {
+            if (parent.rightChild == node){
+                parent.rightChild = node.rightChild;
+            } else {
+                parent.leftChild = node.rightChild;
+            }
+        } else {
+            if (parent.rightChild == node){
+                parent.rightChild = null;
+            } else {
+                parent.leftChild = null;
+            }
+        }
+        return node;
     }
 }

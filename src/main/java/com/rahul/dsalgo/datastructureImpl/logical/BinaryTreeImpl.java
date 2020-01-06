@@ -208,6 +208,7 @@ public class BinaryTreeImpl implements BinaryTree {
             traverseDfsInOrder(node.leftChild);
             System.out.print(node.value + " ");
             traverseDfsInOrder(node.rightChild);
+
         }
     }
 
@@ -437,11 +438,11 @@ public class BinaryTreeImpl implements BinaryTree {
      * 						4		5		6		7
      * 				8		9		10		11		12		13		14		15
      *
-     * */
+     *
+     * @param root*/
     @Override
-    public void printTree() {
+    public void printTree(BTNode root) {
         int level = treeDepth + 1;
-
         BTNode node = root;
         Queue<BTNode> que = new LinkedList<>();
         que.add(node);
