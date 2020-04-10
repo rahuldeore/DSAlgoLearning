@@ -44,6 +44,26 @@ public class BinaryTreeImpl implements BinaryTree {
     }
 
     /**
+     * @TODO Just revising the preorder traversal
+     * */
+    void preOrderTraversal_revision(BTNode root){
+        BTNode node = root;
+        Stack<BTNode> stack = new Stack<>();
+        stack.push(node);
+        while (!stack.isEmpty()) {
+            node = stack.pop();
+            System.out.print(node.value + " ");
+            if (node.rightChild != null) {
+                stack.push(node.rightChild);
+            }
+            if (node.leftChild != null) {
+                stack.push(node.leftChild);
+            }
+        }
+
+    }
+
+    /**
      * This method prints binary tree in pre-order fashion using iteration rather than recursion.
      * */
     public void preOrderTraversal(BTNode root) {
@@ -84,6 +104,36 @@ public class BinaryTreeImpl implements BinaryTree {
             }
         }
         return preOrder;
+    }
+
+    /**
+     * @TODO revising in-order traversal
+     *
+     * */
+    void inOrderTraversal_revision(BTNode root){
+        BTNode node = root;
+        Stack<BTNode> stack = new Stack<>();
+
+        if (node == null){
+            return;
+        } else {
+            stack.push(node);
+            while (!stack.isEmpty()){
+                //node = stack.peek();
+                if (stack.peek().leftChild != null && node != stack.peek().leftChild) {
+                    stack.push(stack.peek().leftChild);
+                } else {
+                    node = stack.pop();
+                    System.out.println(node + " ");
+                    if (node.rightChild != null) {
+                        stack.push(node.rightChild);
+                    }
+                    if (!stack.isEmpty()) {
+                        node = stack.peek().leftChild;
+                    }
+                }
+            }
+        }
     }
 
     /**
