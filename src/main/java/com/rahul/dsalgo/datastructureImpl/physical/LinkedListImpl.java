@@ -209,5 +209,15 @@ public class LinkedListImpl implements LinkedList {
         System.out.println(tNode.element);
     }
 
-
+    @Override
+    public void reverseList() {
+        Node node = head, prev=null, next=null;
+        while (node != null) {
+            next = node.next;
+            node.next = prev;
+            prev = node;
+            node = next;
+        }
+        head = prev;
+    }
 }

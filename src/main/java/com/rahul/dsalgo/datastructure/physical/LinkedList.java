@@ -49,4 +49,9 @@ public interface LinkedList {
      * Prints the list
      * */
     void print();
+
+    /**
+     * Reverses the linked list
+     * */
+    void reverseList();
 }

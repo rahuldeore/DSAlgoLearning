@@ -25,7 +25,6 @@ class LinkedListImplTest {
     void tearDown() {
         System.out.println("Final List");
         list.print();
-        //list.printReverse();
     }
 
     @Test
@@ -75,5 +74,10 @@ class LinkedListImplTest {
         assertEquals(1,list.delete(1));
         assertEquals(5,list.delete(4));
         assertEquals(Integer.MIN_VALUE, list.delete(-1));
+    }
+
+    @Test
+    void reverseListTest() {
+        list.reverseList();
     }
 }
