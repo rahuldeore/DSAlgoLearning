@@ -555,6 +555,9 @@ public class BinaryTreeImpl implements BinaryTree {
         return false;
     }
 
+    /**
+     * Complex algorithm and dependent on node depth variable
+     * */
     // TODO Re-write this without using nodeDepth variable of node structure. Also write the recursive version.
     @Override
     public void printPaths() {
@@ -564,29 +567,112 @@ public class BinaryTreeImpl implements BinaryTree {
         stack.push(node);
 
         while (!stack.isEmpty()) {
-            if (stack.peek() != null) {
-                node = stack.pop();
-                que.add(node);
-                if (node.leftChild != null) {
-                    if (node.rightChild != null) {
-                        stack.push(node.rightChild);
-                    }
-                    stack.push(node.leftChild);
-                } else {
-                    String path = "";
-                    for (BTNode pathNode : que) {
-                        path = path + " " + pathNode.value;
-                    }
-                    System.out.println("Path: " + path);
-                    // Remove nodes from queue that are at level equal or greater than the one on top of the stack. This
-                    // means, stack has either elements that are right child of the ones in queue or siblings. This is
-                    // valid only in case of complete binary tree.
-                    while (!stack.isEmpty() && stack.peek().depth <= que.get(que.size()-1).depth) {
-                        que.remove(que.size()-1);
-                    }
+            node = stack.pop();
+            que.add(node);
+            if (node.leftChild != null) {
+                if (node.rightChild != null) {
+                    stack.push(node.rightChild);
+                }
+                stack.push(node.leftChild);
+            } else {
+                String path = "";
+                for (BTNode pathNode : que) {
+                    path = path + " " + pathNode.value;
+                }
+                System.out.println("Path: " + path);
+                // Remove nodes from queue that are at level equal or greater than the one on top of the stack. This
+                // means, stack has either elements that are right child of the ones in queue or siblings. This is
+                // valid only in case of complete binary tree.
+                while (!stack.isEmpty() && stack.peek().depth <= que.get(que.size()-1).depth) {
+                    que.remove(que.size()-1);
                 }
             }
         }
+    }
+
+    /**
+     * This is recursive print path algorithm that does not use height variable of {@Link(BTNode)}
+     *
+     * */
+    void printPathsRecursively() {
+        if (root == null) {
+            return;
+        }
+        printPath(null, root);
+    }
+
+    private void printPath (List<BTNode> path, BTNode node) {
+        if (path == null) {
+            path = new LinkedList<>();
+        }
+        path.add(node);
+        if (node.leftChild != null) {
+            printPath(new LinkedList<>(path), node.leftChild);
+        }
+        if (node.rightChild != null) {
+            printPath(new LinkedList<>(path), node.rightChild);
+        }
+        if (node.leftChild == null && node.rightChild == null) {
+            path.forEach(btNode -> System.out.print(btNode.value + " "));
+            System.out.println();
+        }
+    }
+    /**
+     * This is very brute force implementation. TODO Research a better/simpler algorithm
+     *
+     * Prints all paths from tree root to each leaf node iteratively.
+     * */
+    void printPathIterative() {
+        BTNode node = root;
+        Stack<BTNode> stack = new Stack<>();
+        List<BTNode> list = new LinkedList<>();
+
+        if (node == null) {
+            return;
+        }
+
+        while (!stack.isEmpty() || node != null) {
+            while (node != null){ // log n
+                stack.push(node);
+                list.add(node);
+                node = node.leftChild;
+            }
+            node = stack.pop();
+            if (node.rightChild != null) {
+                // first, delete the left subtree elements from the list
+                while (list.size()>0 && nodeExist(node.leftChild, list.get(list.size()-1))) { // (long n)/2
+                    list.remove(list.size() - 1);
+                }
+                node = node.rightChild;
+            } else {
+                if (node.leftChild == null && node.rightChild == null) {
+                    // print list only if it is a leaf node having no children
+                    list.forEach(btNode -> System.out.print(btNode.value + " ")); // log n
+                    System.out.println();
+                }
+                node=null;
+            }
+        }
+
+    }
+
+    // returns true if listNode is in the tree with given root element
+    private boolean nodeExist(BTNode root, BTNode listNode) {
+        Stack<BTNode> stack = new Stack<>();
+        BTNode node = root;
+
+        while( !stack.isEmpty() || node != null) {
+            while (node != null) {
+                if (node == listNode) {
+                    return true;
+                }
+                stack.push(node);
+                node = node.leftChild;
+            }
+            node = stack.pop();
+            node = node.rightChild;
+        }
+        return false;
     }
 
     @Override

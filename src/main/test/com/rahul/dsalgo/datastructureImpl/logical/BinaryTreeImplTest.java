@@ -102,6 +102,15 @@ class BinaryTreeImplTest {
 
     @Test
     void printPathsTest() {
+        binaryTree.insertNode(16);
+        binaryTree.insertNode(17);
+        binaryTree.insertNode(18);
+        binaryTree.insertNode(19);
+        binaryTree.insertNode(20);
+        binaryTree.insertNode(21);
+        binaryTree.insertNode(22);
+        binaryTree.insertNode(23);
+        binaryTree.insertNode(24);
         binaryTree.printPaths();
     }
 
@@ -277,5 +286,24 @@ class BinaryTreeImplTest {
         binaryTree.traverseBfsLvlOrder(binaryTree.getRoot());
         binaryTree.delete(1);
         binaryTree.traverseBfsLvlOrder(binaryTree.getRoot());
+    }
+
+    @Test
+    void printPathsRecursivelyTest() {
+        binaryTree.printPathsRecursively();
+    }
+
+    @Test
+    void printPathsIterativeTest() {
+        binaryTree.insertNode(16);
+        binaryTree.insertNode(17);
+        binaryTree.insertNode(18);
+        binaryTree.insertNode(19);
+        binaryTree.insertNode(20);
+        binaryTree.insertNode(21);
+        binaryTree.insertNode(22);
+        binaryTree.insertNode(23);
+        binaryTree.insertNode(24);
+        binaryTree.printPathIterative();
     }
 }

@@ -30,6 +30,7 @@ public class Fibonacci {
         return fiboNum;
     }
 
+    // term is the terminating number upto which this function prints the numbers.
     public void printFiboSequence(int term) {
         int fiboNum=0;
         if ( term == 0){
