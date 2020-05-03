@@ -2,7 +2,6 @@ package com.rahul.dsalgo.datastructureImpl.logical;
 
 import com.rahul.dsalgo.datastructure.logical.AVLTree;
 import com.rahul.dsalgo.datastructureImpl.logical.components.BTNode;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Stack;
 
@@ -124,7 +123,7 @@ public class AVLTreeImpl extends BinarySearchTreeImpl implements AVLTree {
     }
 
     // TODO Simplify this logic
-    private void heightRecalculationAndRotation(@NotNull Stack<BTNode> stack) {
+    private void heightRecalculationAndRotation(Stack<BTNode> stack) {
         BTNode node;
         while (!stack.isEmpty()) {
             node = stack.pop();
