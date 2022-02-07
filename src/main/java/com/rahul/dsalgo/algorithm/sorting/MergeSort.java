@@ -10,7 +10,7 @@ public class MergeSort {
     * is iterative stable TimSort
     * */
 
-    Integer[] mergeSort(Integer arr[]){
+    public Integer[] mergeSort(Integer arr[]){
         int length = arr.length;
         if (length == 1) {
             return arr;
